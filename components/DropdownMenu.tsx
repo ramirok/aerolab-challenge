@@ -2,6 +2,7 @@ import Image from "next/image";
 import styled from "styled-components";
 import AerolabIcon from "../assets/aerolabIcon.svg";
 import ArrowUpIcon from "../assets/arrowUpIcon.svg";
+import { Text, TextGradient } from "./ui/TextComponents";
 
 const Container = styled.div`
   display: flex;
@@ -11,7 +12,6 @@ const Container = styled.div`
   width: 156px;
   height: 48px;
   border: 1px solid #dae4f2;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
   border-radius: 16px;
   transition: all 0.2s;
   cursor: pointer;
@@ -21,22 +21,11 @@ const Container = styled.div`
   }
 `;
 
-const DesktopTextL1Default = styled.div`
-  font-family: "Montserrat", sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 150%;
-  letter-spacing: 0;
-  background: linear-gradient(102.47deg, #176feb -5.34%, #ff80ff 106.58%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-`;
-
 const DropdownMenu = () => {
   return (
     <Container>
       <Image src={AerolabIcon} alt="aerolab" height={32} width={32} />
-      <DesktopTextL1Default>10.000</DesktopTextL1Default>
+      <TextGradient>10.000</TextGradient>
       <Image
         src={ArrowUpIcon}
         alt="arrow"
