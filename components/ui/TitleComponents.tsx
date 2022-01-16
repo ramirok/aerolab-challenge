@@ -8,11 +8,16 @@ export const TitleL1 = styled.div`
   letter-spacing: 0;
   text-transform: uppercase;
   width: min-content;
-  white-space: nowrap;
+  white-space: pre;
+  display: inline-block;
   ${({ color }: { color?: "gradient" }) =>
     color === "gradient"
       ? "background: linear-gradient(102.47deg, #176feb -5.34%, #ff80ff 106.58%);-webkit-background-clip: text; -webkit-text-fill-color: transparent;"
       : "color: #252f3d"};
+`;
+
+export const TitleL2 = styled(TitleL1)`
+  font-size: 48px;
 `;
 
 export const TitleL3 = styled(TitleL1)`

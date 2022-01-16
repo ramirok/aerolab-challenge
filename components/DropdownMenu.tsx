@@ -6,7 +6,7 @@ import AerolabIconBlack from "../assets/aerolabIconBlack.svg";
 import ArrowUpIcon from "../assets/arrowUpIcon.svg";
 import { Button } from "./ui/ButtonComponents";
 import { OptionSelector } from "./ui/SelectorComponents";
-import { TextL1, TextGradient, TextL2 } from "./ui/TextComponents";
+import { TextL1, TextL2 } from "./ui/TextComponents";
 
 const Container = styled.div`
   position: relative;
@@ -108,7 +108,7 @@ const DropdownMenu = () => {
         onClick={() => setMenuIsVisible((prev) => !prev)}
       >
         <Image src={AerolabIcon} alt="aerolab" height={32} width={32} />
-        <TextGradient>10.000</TextGradient>
+        <TextL1 color="gradient">10.000</TextL1>
         <Image
           src={ArrowUpIcon}
           alt="arrow"

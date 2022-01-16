@@ -32,7 +32,7 @@ const Container = styled.section`
     height: 528px;
     left: -237px;
     right: -237px;
-    bottom: 0;
+    bottom: 40px;
     z-index: -2;
     background-image: linear-gradient(
       102.47deg,
@@ -72,7 +72,7 @@ const FeaturesSection = () => {
   return (
     <Container>
       {featureCards.map((card) => (
-        <FeatureCard {...card} key={card.img} />
+        <FeatureCard {...card} key={card.title} />
       ))}
     </Container>
   );
