@@ -3,7 +3,7 @@ import styled from "styled-components";
 import HeroImage from "../assets/heroImage.svg";
 import DownArrow from "../assets/arrowDownIcon.svg";
 import { Button } from "./ui/ButtonComponents";
-import { TextL1, TextAllCaps } from "./ui/TextComponents";
+import { TextL1 } from "./ui/TextComponents";
 import { TitleL1 } from "./ui/TitleComponents";
 
 const Container = styled.section`
@@ -41,7 +41,7 @@ const HeroSection = () => {
   return (
     <Container>
       <div className="textContainer">
-        <TextAllCaps>explore the</TextAllCaps>
+        <TextL1 allCaps>explore the</TextL1>
         <TitleL1 color="gradient">tech</TitleL1>
         <TitleL1>zone</TitleL1>
         <TextL1>
@@ -49,7 +49,7 @@ const HeroSection = () => {
           exchange them for cool tech.
         </TextL1>
         <Button>
-          VIEW ALL PRODUCTS{" "}
+          VIEW ALL PRODUCTS{"    "}
           <Image src={DownArrow} alt="arrow down" width={14} height={17} />
         </Button>
       </div>

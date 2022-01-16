@@ -4,6 +4,7 @@ import styled from "styled-components";
 import AerolabIcon from "../assets/aerolabIcon.svg";
 import AerolabIconBlack from "../assets/aerolabIconBlack.svg";
 import ArrowUpIcon from "../assets/arrowUpIcon.svg";
+import AerolabIconWhite from "../assets/aerolabIconWhite.svg";
 import { Button } from "./ui/ButtonComponents";
 import { OptionSelector } from "./ui/SelectorComponents";
 import { TextL1, TextL2 } from "./ui/TextComponents";
@@ -59,6 +60,9 @@ const Container = styled.div`
     }
     &__addCredits {
       margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
     }
 
     &__card {
@@ -144,7 +148,9 @@ const DropdownMenu = () => {
         </div>
 
         <div className="menuPanel__addCredits">
-          <Button secondary>Add Point</Button>
+          <Button secondary>
+            <Image src={AerolabIconWhite} alt="aerolab icon" /> Add Point
+          </Button>
         </div>
       </div>
     </Container>

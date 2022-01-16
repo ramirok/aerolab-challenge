@@ -6,7 +6,6 @@ const ButtonStyles = styled.button`
   border-radius: ${({ secondary }: { secondary?: boolean }) =>
     secondary ? "16px" : "24px"};
   height: ${({ secondary }) => (secondary ? "50px" : "80px")};
-  width: ${({ secondary }) => (secondary ? "265px" : "320px")};
   padding: 0 35px;
   background: linear-gradient(102.47deg, #176feb -5.34%, #ff80ff 106.58%);
   position: relative;
@@ -48,6 +47,8 @@ export const Button = (props: {
   secondary?: boolean;
 }) => (
   <ButtonStyles {...props}>
-    <TextL1 color="white">{props.children}</TextL1>
+    <TextL1 color="white" nowrap>
+      {props.children}
+    </TextL1>
   </ButtonStyles>
 );

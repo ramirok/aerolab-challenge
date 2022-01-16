@@ -5,9 +5,11 @@ import { TextL1 } from "./ui/TextComponents";
 
 const Container = styled.div`
   display: flex;
+  justify-content: space-between;
   border: 1px solid #dae4f2;
   padding: 8px;
   border-radius: 12px;
+  width: 240px;
 
   & .arrow {
     background-color: #e5f0ff;
@@ -21,36 +23,69 @@ const Container = styled.div`
     justify-content: center;
     transition: all 0.2s;
 
-    &:hover {
+    &:hover:enabled {
       border: 1px solid #7c899c;
     }
     &-left {
       transform: rotate(90deg);
       margin-right: 20px;
 
-      &:hover {
+      &:disabled {
+        background-color: #e6edf7;
+      }
+
+      &:hover:enabled {
         transform: rotate(90deg) scale(1.03);
       }
     }
     &-right {
       transform: rotate(-90deg);
       margin-left: 20px;
-      &:hover {
+      &:hover:enabled {
         transform: rotate(-90deg) scale(1.03);
       }
     }
   }
 `;
 
-const Pager = () => {
+const Pager = ({
+  totalCount,
+  page,
+  pageSize,
+  setPage,
+}: {
+  totalCount: number;
+  page: number;
+  pageSize: number;
+  setPage: (func: (prev: number) => number) => void;
+}) => {
+  const totalPageCount = Math.ceil(totalCount / pageSize);
+  const prevPage = () => {
+    setPage((prev) => (prev > 1 ? prev - 1 : 1));
+  };
+
+  const nextPage = () => {
+    setPage((prev) => (prev < totalPageCount ? prev + 1 : totalPageCount));
+  };
+
   return (
     <Container>
-      <button className="arrow arrow-left">
+      <button
+        className="arrow arrow-left"
+        onClick={prevPage}
+        disabled={page === 1}
+      >
         <Image src={Arrow} alt="left arrow" width={20} height={20} />
       </button>
       <TextL1 nowrap>Page </TextL1>
-      <TextL1 color="gradient">1 of 3</TextL1>
-      <button className="arrow arrow-right">
+      <TextL1 color="gradient">
+        {page} of {totalPageCount}
+      </TextL1>
+      <button
+        className="arrow arrow-right"
+        onClick={nextPage}
+        disabled={page === totalPageCount}
+      >
         <Image src={Arrow} alt="right arrow" width={20} height={20} />
       </button>
     </Container>
