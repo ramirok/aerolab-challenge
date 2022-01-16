@@ -1,15 +1,21 @@
 import styled from "styled-components";
 
-export const DesktopTitleL1Default = styled.div`
+export const TitleL1 = styled.div`
   font-family: "Montserrat", sans-serif;
   font-size: 200px;
   font-weight: 900;
   line-height: 80%;
   letter-spacing: 0;
   text-transform: uppercase;
-  color: #252f3d;
-  ${(props: { colored?: boolean }) =>
-    props.colored
+  width: min-content;
+  white-space: nowrap;
+  ${({ color }: { color?: "gradient" }) =>
+    color === "gradient"
       ? "background: linear-gradient(102.47deg, #176feb -5.34%, #ff80ff 106.58%);-webkit-background-clip: text; -webkit-text-fill-color: transparent;"
-      : ""};
+      : "color: #252f3d"};
+`;
+
+export const TitleL3 = styled(TitleL1)`
+  font-size: 32px;
+  line-height: 100%;
 `;

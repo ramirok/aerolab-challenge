@@ -1,16 +1,21 @@
 import styled from "styled-components";
-import { Text } from "./TextComponents";
+import { TextL1 } from "./TextComponents";
 
-export const ButtonStyles = styled.button`
+const ButtonStyles = styled.button`
   border: 0;
-  border-radius: 24px;
-  height: 80px;
-  width: 320px;
+  border-radius: ${({ secondary }: { secondary?: boolean }) =>
+    secondary ? "16px" : "24px"};
+  height: ${({ secondary }) => (secondary ? "50px" : "80px")};
+  width: ${({ secondary }) => (secondary ? "265px" : "320px")};
   padding: 0 35px;
   background: linear-gradient(102.47deg, #176feb -5.34%, #ff80ff 106.58%);
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 1;
   transition: all 0.1s linear;
+  cursor: pointer;
 
   &:hover {
     transform: scale(1.02);
@@ -43,6 +48,6 @@ export const Button = (props: {
   secondary?: boolean;
 }) => (
   <ButtonStyles {...props}>
-    <Text white>{props.children}</Text>
+    <TextL1 color="white">{props.children}</TextL1>
   </ButtonStyles>
 );

@@ -3,8 +3,8 @@ import styled from "styled-components";
 import HeroImage from "../assets/heroImage.svg";
 import DownArrow from "../assets/arrowDownIcon.svg";
 import { Button } from "./ui/ButtonComponents";
-import { Text, TextAllCaps } from "./ui/TextComponents";
-import { DesktopTitleL1Default } from "./ui/TitleComponents";
+import { TextL1, TextAllCaps } from "./ui/TextComponents";
+import { TitleL1 } from "./ui/TitleComponents";
 
 const Container = styled.section`
   display: flex;
@@ -42,12 +42,12 @@ const HeroSection = () => {
     <Container>
       <div className="textContainer">
         <TextAllCaps>explore the</TextAllCaps>
-        <DesktopTitleL1Default colored>tech</DesktopTitleL1Default>
-        <DesktopTitleL1Default>zone</DesktopTitleL1Default>
-        <Text>
+        <TitleL1 color="gradient">tech</TitleL1>
+        <TitleL1>zone</TitleL1>
+        <TextL1>
           Here you’ll be able to exchange all of your hard-earned Aeropoints and
           exchange them for cool tech.
-        </Text>
+        </TextL1>
         <Button>
           VIEW ALL PRODUCTS{" "}
           <Image src={DownArrow} alt="arrow down" width={14} height={17} />
