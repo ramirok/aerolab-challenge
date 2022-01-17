@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import AerolabIcon from "../assets/aerolabIcon.svg";
 import AerolabIconBlack from "../assets/aerolabIconBlack.svg";
@@ -8,6 +8,9 @@ import AerolabIconWhite from "../assets/aerolabIconWhite.svg";
 import { Button } from "./ui/ButtonComponents";
 import { OptionSelector } from "./ui/SelectorComponents";
 import { TextL1, TextL2 } from "./ui/TextComponents";
+import { UserData } from "../types";
+import Spinner from "./ui/Spinner";
+import { useUser } from "../context/userContext";
 
 const Container = styled.div`
   position: relative;
@@ -104,6 +107,33 @@ const Container = styled.div`
 
 const DropdownMenu = () => {
   const [menuIsVisible, setMenuIsVisible] = useState(false);
+  const [pointsSelected, setPointsSelected] = useState<number>(NaN);
+  const [isLoading, setIsLoading] = useState(false);
+  const pointsOptions = [1000, 5000, 7500];
+
+  const user = useUser();
+
+  const addPoints = async (points: number) => {
+    setIsLoading(true);
+    const response = await fetch(
+      "https://coding-challenge-api.aerolab.co/user/points",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWUyZDZhMWJjNDgzYTAwMjE2ZGE5NjgiLCJpYXQiOjE2NDIyNTYwMzN9.VVA-ablaYVIMKITor6C3F5DnVb9CjfrD-egzU_mAwyY",
+        },
+        body: JSON.stringify({ amount: points }),
+      }
+    );
+    if (response.ok) {
+      const parsedResponse = await response.json();
+      setPointsSelected(NaN);
+      user.addRemoveUserPoints(points);
+    }
+    setIsLoading(false);
+  };
 
   return (
     <Container>
@@ -112,7 +142,9 @@ const DropdownMenu = () => {
         onClick={() => setMenuIsVisible((prev) => !prev)}
       >
         <Image src={AerolabIcon} alt="aerolab" height={32} width={32} />
-        <TextL1 color="gradient">10.000</TextL1>
+        <TextL1 color="gradient">
+          {user.isLoading ? <Spinner color="dark" /> : user.userData.points}
+        </TextL1>
         <Image
           src={ArrowUpIcon}
           alt="arrow"
@@ -134,22 +166,39 @@ const DropdownMenu = () => {
             <Image src={AerolabIconBlack} alt="aerolab" />
           </span>
           <TextL2 color="white" className="card__name">
-            Nombre
+            {user.userData.name}
           </TextL2>
           <TextL2 color="white" className="card__date">
-            00/00
+            {new Date(user.userData.createDate).toLocaleDateString(undefined, {
+              month: "2-digit",
+              year: "2-digit",
+            })}
           </TextL2>
         </div>
 
         <div className="menuPanel__creditsOptions">
-          <OptionSelector>1000</OptionSelector>
-          <OptionSelector active>5000</OptionSelector>
-          <OptionSelector>7500</OptionSelector>
+          {pointsOptions.map((option) => (
+            <div onClick={() => setPointsSelected(option)} key={option}>
+              <OptionSelector active={option === pointsSelected}>
+                {option}
+              </OptionSelector>
+            </div>
+          ))}
         </div>
 
         <div className="menuPanel__addCredits">
-          <Button secondary>
-            <Image src={AerolabIconWhite} alt="aerolab icon" /> Add Point
+          <Button
+            secondary
+            disabled={!Boolean(pointsSelected)}
+            onClick={() => addPoints(pointsSelected)}
+          >
+            {isLoading ? (
+              <Spinner />
+            ) : (
+              <>
+                <Image src={AerolabIconWhite} alt="aerolab icon" /> Add Point
+              </>
+            )}
           </Button>
         </div>
       </div>

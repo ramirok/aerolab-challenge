@@ -5,6 +5,7 @@ import TopBar from "../components/TopBar";
 import HeroSection from "../components/HeroSection";
 import FeaturesSection from "../components/FeaturesSection";
 import ProductsSection from "../components/productsSection";
+import Footer from "../components/footer";
 
 const Layout = styled.div`
   max-width: 1446px;
@@ -31,6 +32,7 @@ const Home: NextPage = () => {
       <HeroSection />
       <FeaturesSection />
       <ProductsSection />
+      <Footer />
     </Layout>
   );
 };

@@ -1,10 +1,17 @@
 import styled from "styled-components";
 import { TextL1 } from "./TextComponents";
 
-const ButtonStyles = styled.button`
+interface ButtonProps {
+  children: React.ReactNode;
+  secondary?: boolean;
+  disabled?: boolean;
+  onClick?: () => void;
+  color?: "black" | "gray" | "white" | "gradient";
+}
+
+const ButtonStyles = styled.button<ButtonProps>`
   border: 0;
-  border-radius: ${({ secondary }: { secondary?: boolean }) =>
-    secondary ? "16px" : "24px"};
+  border-radius: ${({ secondary }) => (secondary ? "16px" : "24px")};
   height: ${({ secondary }) => (secondary ? "50px" : "80px")};
   padding: 0 35px;
   background: linear-gradient(102.47deg, #176feb -5.34%, #ff80ff 106.58%);
@@ -16,11 +23,14 @@ const ButtonStyles = styled.button`
   transition: all 0.1s linear;
   cursor: pointer;
 
-  &:hover {
+  &:hover:enabled {
     transform: scale(1.02);
   }
-  &:active {
+  &:active:enabled {
     transform: scale(1);
+  }
+  &:disabled {
+    background: #e6edf7;
   }
 
   // transition for gradient background
@@ -37,17 +47,14 @@ const ButtonStyles = styled.button`
     transition: opacity 0.1s linear;
     opacity: 0;
   }
-  &:hover::after {
+  &:hover:enabled::after {
     opacity: 1;
   }
 `;
 
-export const Button = (props: {
-  children: React.ReactNode;
-  secondary?: boolean;
-}) => (
+export const Button = (props: ButtonProps) => (
   <ButtonStyles {...props}>
-    <TextL1 color="white" nowrap>
+    <TextL1 color={props.disabled ? "black" : props.color} nowrap>
       {props.children}
     </TextL1>
   </ButtonStyles>

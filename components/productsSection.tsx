@@ -79,7 +79,7 @@ const ProductsSection = () => {
         },
       }
     );
-    const parsedResponse = await response.json();
+    const parsedResponse: Product[] = await response.json();
     setProducts(parsedResponse);
     setFilteredProducts(parsedResponse);
   };

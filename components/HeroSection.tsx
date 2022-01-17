@@ -48,7 +48,7 @@ const HeroSection = () => {
           Here you’ll be able to exchange all of your hard-earned Aeropoints and
           exchange them for cool tech.
         </TextL1>
-        <Button>
+        <Button color="white">
           VIEW ALL PRODUCTS{"    "}
           <Image src={DownArrow} alt="arrow down" width={14} height={17} />
         </Button>

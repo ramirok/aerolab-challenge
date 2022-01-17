@@ -8,3 +8,11 @@ export interface Product {
     hdUrl: string;
   };
 }
+
+export interface UserData {
+  _id: string;
+  name: string;
+  points: number;
+  createDate: string;
+  redeemHistory: Product[];
+}
