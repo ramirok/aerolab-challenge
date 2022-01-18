@@ -1,14 +1,10 @@
 import type { NextPage } from "next";
-
 import styled from "styled-components";
 import TopBar from "../components/TopBar";
 import HeroSection from "../components/HeroSection";
 import FeaturesSection from "../components/FeaturesSection";
 import ProductsSection from "../components/productsSection";
 import Footer from "../components/Footer";
-import { Toaster } from "react-hot-toast";
-import Image from "next/image";
-import ErrorIcon from "../assets/error.svg";
 import toasts from "../lib/Toasts";
 
 const Layout = styled.div`
