@@ -6,10 +6,10 @@ import HeroSection from "../components/HeroSection";
 import FeaturesSection from "../components/FeaturesSection";
 import ProductsSection from "../components/productsSection";
 import Footer from "../components/Footer";
-import toast, { ToastBar, Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import Image from "next/image";
-import CloseIcon from "../assets/x.svg";
-import { TextL1 } from "../components/ui/TextComponents";
+import ErrorIcon from "../assets/error.svg";
+import toasts from "../lib/Toasts";
 
 const Layout = styled.div`
   max-width: 1446px;
@@ -38,30 +38,8 @@ const Home: NextPage = () => {
       <ProductsSection />
       <Footer />
 
-      <Toaster
-        position="bottom-left"
-        reverseOrder={true}
-        toastOptions={{
-          success: {
-            style: {
-              border: "2px solid #29CC74",
-              padding: "0 27px",
-              height: "80px",
-              minWidth: "530px",
-              maxWidth: "550px",
-            },
-          },
-          error: {
-            style: {
-              border: "2px solid red",
-              padding: "0 27px",
-              height: "80px",
-              minWidth: "530px",
-              maxWidth: "550px",
-            },
-          },
-        }}
-      />
+      {/* toasts notifications container */}
+      <toasts.ToasterCustom />
     </Layout>
   );
 };
