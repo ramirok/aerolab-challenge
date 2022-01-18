@@ -4,7 +4,20 @@ interface SpinnerProps {
   color?: "light" | "dark";
 }
 
-const Container = styled.div<SpinnerProps>`
+const Spinner = (props: SpinnerProps) => {
+  return (
+    <StyledContainer {...props}>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </StyledContainer>
+  );
+};
+
+export default Spinner;
+
+const StyledContainer = styled.div<SpinnerProps>`
   display: inline-block;
   position: relative;
   width: 25px;
@@ -42,16 +55,3 @@ const Container = styled.div<SpinnerProps>`
     }
   }
 `;
-
-const Spinner = (props: SpinnerProps) => {
-  return (
-    <Container {...props}>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </Container>
-  );
-};
-
-export default Spinner;

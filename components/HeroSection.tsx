@@ -7,41 +7,10 @@ import { TextL1 } from "./ui/TextComponents";
 import { TitleL1 } from "./ui/TitleComponents";
 import Link from "next/link";
 
-const Container = styled.section`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  & .textContainer {
-    max-width: 600px;
-    align-self: flex-end;
-    & button {
-      margin-top: 70px;
-    }
-  }
-
-  & .imgContainer {
-    position: relative;
-  }
-
-  & .imgContainer::before {
-    content: "";
-    position: absolute;
-    bottom: 2px;
-    left: 50%;
-    width: 100%;
-    height: 85%;
-    transform: translateX(-50%);
-    background: linear-gradient(102.47deg, #7296eb -5.34%, #eac0e9 106.58%);
-    border-radius: 105px;
-    opacity: 0.7;
-  }
-`;
-
 const HeroSection = () => {
   return (
-    <Container>
-      <div className="textContainer">
+    <StyledContainer>
+      <StyledTextContent>
         <TextL1 allCaps>explore the</TextL1>
         <TitleL1 color="gradient">tech</TitleL1>
         <TitleL1>zone</TitleL1>
@@ -57,8 +26,9 @@ const HeroSection = () => {
             </Button>
           </a>
         </Link>
-      </div>
-      <div className="imgContainer">
+      </StyledTextContent>
+
+      <StyledImageContent>
         <Image
           src={HeroImage}
           alt="man with tech products"
@@ -66,9 +36,39 @@ const HeroSection = () => {
           height={700}
           priority
         />
-      </div>
-    </Container>
+      </StyledImageContent>
+    </StyledContainer>
   );
 };
 
 export default HeroSection;
+
+const StyledContainer = styled.section`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const StyledTextContent = styled.div`
+  max-width: 600px;
+  align-self: flex-end;
+  & button {
+    margin-top: 70px;
+  }
+`;
+
+const StyledImageContent = styled.div`
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    width: 100%;
+    height: 85%;
+    transform: translateX(-50%);
+    background: linear-gradient(102.47deg, #7296eb -5.34%, #eac0e9 106.58%);
+    border-radius: 105px;
+    opacity: 0.7;
+  }
+`;

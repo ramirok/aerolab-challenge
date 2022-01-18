@@ -5,6 +5,18 @@ interface SelectorProps {
   large?: boolean;
 }
 
+export const OptionSelector = (props: {
+  children: React.ReactNode;
+  active?: boolean;
+  large?: boolean;
+}) => (
+  <OptionSelectorStyle {...props}>
+    <TextL1 color={props.active ? "white" : "gradient"} nowrap>
+      {props.children}
+    </TextL1>
+  </OptionSelectorStyle>
+);
+
 const OptionSelectorStyle = styled.div<SelectorProps>`
   border-radius: 12px;
   border: 1px hidden transparent;
@@ -27,15 +39,3 @@ const OptionSelectorStyle = styled.div<SelectorProps>`
     border: ${({ active }) => (active ? "" : "1px solid #7c899c")};
   }
 `;
-
-export const OptionSelector = (props: {
-  children: React.ReactNode;
-  active?: boolean;
-  large?: boolean;
-}) => (
-  <OptionSelectorStyle {...props}>
-    <TextL1 color={props.active ? "white" : "gradient"} nowrap>
-      {props.children}
-    </TextL1>
-  </OptionSelectorStyle>
-);

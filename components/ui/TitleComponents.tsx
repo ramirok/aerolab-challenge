@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const TitleL1 = styled.div`
+interface TitleProps {
+  color?: "gradient";
+}
+
+export const TitleL1 = styled.div<TitleProps>`
   font-family: "Montserrat", sans-serif;
   font-size: 200px;
   font-weight: 900;
@@ -10,7 +14,7 @@ export const TitleL1 = styled.div`
   width: min-content;
   white-space: pre;
   display: inline-block;
-  ${({ color }: { color?: "gradient" }) =>
+  ${({ color }) =>
     color === "gradient"
       ? "background: linear-gradient(102.47deg, #176feb -5.34%, #ff80ff 106.58%);-webkit-background-clip: text; -webkit-text-fill-color: transparent;"
       : "color: #252f3d"};

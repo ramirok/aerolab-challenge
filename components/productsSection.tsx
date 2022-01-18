@@ -10,42 +10,15 @@ import ProductCardSkeleton from "./ui/ProductCardSkeleton";
 import { TextL1 } from "./ui/TextComponents";
 import { TitleL2 } from "./ui/TitleComponents";
 
-const Container = styled.section`
-  padding-top: 235px;
-
-  & .toolbar__container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 40px;
-  }
-
-  & .cards__container {
-    display: grid;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 50px;
-
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-column-gap: 24px;
-  }
-
-  & .bottom__pager {
-    display: flex;
-    width: 55%;
-    justify-content: space-between;
-    margin-left: auto;
-  }
-`;
-
 const ProductsSection = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>([]); //products fetched
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]); //products to render
   const [page, setPage] = useState(1);
-  const user = useUser();
-
+  const [currentSorting, setCurrentSorting] = useState<string>("");
   const [currentFilter, setCurrentFilter] = useState<string>("All Products");
-  const [currentSorting, setCurrentSorting] = useState<string>();
+
+  const user = useUser();
+  const PRODUCTS_PER_PAGE = 16;
 
   const handleChangeFilter = (value: string, categories: string[]) => {
     setCurrentFilter(value);
@@ -98,11 +71,13 @@ const ProductsSection = () => {
   useEffect(() => {
     fetchProducts();
   }, []);
+
   return (
-    <Container id="products">
+    <StyledContainer id="products">
       <TitleL2 color="gradient">tech</TitleL2>
       <TitleL2> products</TitleL2>
-      <div className="toolbar__container">
+
+      <StyledToolBar>
         <Filter
           products={products}
           handleChangeFilter={handleChangeFilter}
@@ -116,34 +91,62 @@ const ProductsSection = () => {
           page={page}
           setPage={setPage}
           totalCount={filteredProducts.length}
-          pageSize={16}
+          pageSize={PRODUCTS_PER_PAGE}
         />
-      </div>
+      </StyledToolBar>
 
-      <div className="cards__container">
+      <StyledProductCards>
         {filteredProducts.length && !user.isLoading
           ? filteredProducts
-              .slice(16 * (page - 1), 16 * page)
+              .slice(PRODUCTS_PER_PAGE * (page - 1), PRODUCTS_PER_PAGE * page)
               .map((product) => (
                 <ProductCard product={product} key={product._id} />
               ))
-          : Array.apply(null, Array(16)).map((_, index) => (
+          : Array.apply(null, Array(PRODUCTS_PER_PAGE)).map((_, index) => (
               <ProductCardSkeleton key={index} />
             ))}
-      </div>
-      <div className="bottom__pager">
+      </StyledProductCards>
+
+      <StyledBottomPager>
         <TextL1 color="gradient">
-          16 of {filteredProducts.length} products
+          {PRODUCTS_PER_PAGE} of {filteredProducts.length} products
         </TextL1>
         <Pager
           page={page}
           setPage={setPage}
           totalCount={filteredProducts.length}
-          pageSize={16}
+          pageSize={PRODUCTS_PER_PAGE}
         />
-      </div>
-    </Container>
+      </StyledBottomPager>
+    </StyledContainer>
   );
 };
 
 export default ProductsSection;
+
+const StyledContainer = styled.section`
+  padding-top: 235px;
+`;
+
+const StyledToolBar = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+`;
+
+const StyledProductCards = styled.div`
+  display: grid;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 50px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 24px;
+`;
+
+const StyledBottomPager = styled.div`
+  display: flex;
+  width: 55%;
+  justify-content: space-between;
+  margin-left: auto;
+`;

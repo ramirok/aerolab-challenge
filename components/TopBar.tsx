@@ -5,7 +5,48 @@ import styled from "styled-components";
 import Logo from "../assets/logo.svg";
 import DropdownMenu from "./DropdownMenu";
 
-const Container = styled.div`
+const TopBar = () => {
+  const containerRef = useRef(null);
+  const [isPinned, setIsPinned] = useState(false);
+
+  useEffect(() => {
+    // detect when topbar gets pinned on scroll
+    const bar = containerRef.current;
+    const observer = new IntersectionObserver(
+      ([e]) => {
+        setIsPinned(!e.isIntersecting);
+      },
+      { threshold: 1, root: null, rootMargin: "0px" }
+    );
+    if (bar) {
+      observer.observe(bar);
+    }
+
+    return () => {
+      if (bar) observer.unobserve(bar);
+    };
+  }, [containerRef]);
+
+  return (
+    <StyledTopBar
+      id="top-bar"
+      ref={containerRef}
+      className={isPinned ? "topBar-pinned" : ""}
+    >
+      <Link href="/">
+        <a>
+          <Image src={Logo} alt="logo" />
+        </a>
+      </Link>
+      <DropdownMenu />
+    </StyledTopBar>
+  );
+};
+
+export default TopBar;
+
+// styles
+const StyledTopBar = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -27,49 +68,10 @@ const Container = styled.div`
     top: 10px;
     left: 0;
   }
-  &.is-pinned {
+  &.topBar-pinned {
     &:before {
       box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
       border: 1px solid #dae4f2;
     }
   }
 `;
-
-const TopBar = () => {
-  const containerRef = useRef(null);
-  const [isPinned, setIsPinned] = useState(false);
-
-  useEffect(() => {
-    const bar = containerRef.current;
-    const observer = new IntersectionObserver(
-      ([e]) => {
-        setIsPinned(!e.isIntersecting);
-      },
-      { threshold: 1, root: null, rootMargin: "0px" }
-    );
-    if (bar) {
-      observer.observe(bar);
-    }
-
-    return () => {
-      if (bar) observer.unobserve(bar);
-    };
-  }, [containerRef]);
-
-  return (
-    <Container
-      id="top-bar"
-      ref={containerRef}
-      className={isPinned ? "is-pinned" : "not-pinned"}
-    >
-      <Link href="/">
-        <a>
-          <Image src={Logo} alt="logo" />
-        </a>
-      </Link>
-      <DropdownMenu />
-    </Container>
-  );
-};
-
-export default TopBar;

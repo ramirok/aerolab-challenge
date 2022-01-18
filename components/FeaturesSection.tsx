@@ -7,7 +7,44 @@ import Icon1 from "../assets/featuresCards/icon1.svg";
 import Icon2 from "../assets/featuresCards/icon2.svg";
 import Icon3 from "../assets/featuresCards/icon3.svg";
 
-const Container = styled.section`
+const FeaturesSection = () => {
+  const featureCards = [
+    {
+      img: Feature1,
+      alt: "person riding a rocket",
+      title: "1—BROWSE",
+      description:
+        "Browse our tech catalog with more than 20 top tech products",
+      icon: Icon1,
+    },
+    {
+      img: Feature2,
+      alt: "hands touching each other",
+      title: "2—CHOOSE",
+      description: "Exchange your hard earned AeroPoints for the item you want",
+      icon: Icon2,
+    },
+    {
+      img: Feature3,
+      alt: "person using a computer",
+      title: "3—ENJOY!",
+      description:
+        "All done, you can relax! We’ll take care of delivery of your tech item!",
+      icon: Icon3,
+    },
+  ];
+  return (
+    <StyledContainer>
+      {featureCards.map((card) => (
+        <FeatureCard {...card} key={card.title} />
+      ))}
+    </StyledContainer>
+  );
+};
+
+export default FeaturesSection;
+
+const StyledContainer = styled.section`
   margin-top: 100px;
   display: flex;
   justify-content: center;
@@ -41,40 +78,3 @@ const Container = styled.section`
     background-color: transparent;
   }
 `;
-
-const FeaturesSection = () => {
-  const featureCards = [
-    {
-      img: Feature1,
-      alt: "person riding a rocket",
-      title: "1—BROWSE",
-      description:
-        "Browse our tech catalog with more than 20 top tech products",
-      icon: Icon1,
-    },
-    {
-      img: Feature2,
-      alt: "hands touching each other",
-      title: "2—CHOOSE",
-      description: "Exchange your hard earned AeroPoints for the item you want",
-      icon: Icon2,
-    },
-    {
-      img: Feature3,
-      alt: "person using a computer",
-      title: "3—ENJOY!",
-      description:
-        "All done, you can relax! We’ll take care of delivery of your tech item!",
-      icon: Icon3,
-    },
-  ];
-  return (
-    <Container>
-      {featureCards.map((card) => (
-        <FeatureCard {...card} key={card.title} />
-      ))}
-    </Container>
-  );
-};
-
-export default FeaturesSection;

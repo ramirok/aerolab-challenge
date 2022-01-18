@@ -1,36 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 import { TextL1 } from "./ui/TextComponents";
-import { useState } from "react";
 import { OptionSelector } from "./ui/SelectorComponents";
 
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  margin-right: 150px;
+interface SortProps {
+  handleChangeSorting: (value: string) => void;
+  currentSorting: string;
+}
 
-  & .sortOptions {
-    display: flex;
-    & > div {
-      margin-left: 12px;
-    }
-  }
-`;
-
-const Sort = ({
-  handleChangeSorting,
-  currentSorting,
-}: {
-  handleChangeSorting: any;
-  currentSorting: any;
-}) => {
+const Sort = ({ handleChangeSorting, currentSorting }: SortProps) => {
   const options = ["Name", "Lowest Price", "Highest Price"];
-  const [selected, setSelected] = useState<string>();
 
   return (
-    <Container>
+    <StyledSortContainer>
       <TextL1>Sort By: </TextL1>
-      <div className="sortOptions">
+      <StyledSortOptions className="sortOptions">
         {options.map((option) => (
           <div
             key={option}
@@ -43,9 +27,23 @@ const Sort = ({
             </OptionSelector>
           </div>
         ))}
-      </div>
-    </Container>
+      </StyledSortOptions>
+    </StyledSortContainer>
   );
 };
 
 export default Sort;
+
+// styles
+const StyledSortContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-right: 150px;
+`;
+
+const StyledSortOptions = styled.div`
+  display: flex;
+  & > div {
+    margin-left: 12px;
+  }
+`;

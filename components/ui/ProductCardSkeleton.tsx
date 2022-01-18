@@ -2,7 +2,26 @@ import Image from "next/image";
 import styled from "styled-components";
 import AerolabSkeleton from "../../assets/aerolabSkeleton.svg";
 
-const Container = styled.div`
+const ProductCardSkeleton = () => {
+  return (
+    <StyledContainer>
+      <div className="card">
+        <div className="card__img">
+          <Image src={AerolabSkeleton} alt="loading" />
+        </div>
+        <div className="card__content">
+          <div className="card__title"></div>
+          <div className="card__category"></div>
+        </div>
+      </div>
+      <div className="button"></div>
+    </StyledContainer>
+  );
+};
+
+export default ProductCardSkeleton;
+
+const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -69,22 +88,3 @@ const Container = styled.div`
     }
   }
 `;
-
-const ProductCardSkeleton = () => {
-  return (
-    <Container>
-      <div className="card">
-        <div className="card__img">
-          <Image src={AerolabSkeleton} alt="loading" />
-        </div>
-        <div className="card__content">
-          <div className="card__title"></div>
-          <div className="card__category"></div>
-        </div>
-      </div>
-      <div className="button"></div>
-    </Container>
-  );
-};
-
-export default ProductCardSkeleton;
