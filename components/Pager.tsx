@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import PageArrowIcon from "../assets/PageArrowIcon";
 import { TextL1 } from "./ui/TextComponents";

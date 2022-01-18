@@ -22,6 +22,7 @@ const ProductsSection = () => {
 
   const handleChangeFilter = (value: string, categories: string[]) => {
     setCurrentFilter(value);
+    setPage(1);
     setFilteredProducts(
       value === categories[0]
         ? products
