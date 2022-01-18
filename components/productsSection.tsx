@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useUser } from "../context/userContext";
 import { Product } from "../types";
 import Filter from "./FIlter";
 import Pager from "./Pager";
 import Sort from "./Sort";
 import ProductCard from "./ui/ProductCard";
+import ProductCardSkeleton from "./ui/ProductCardSkeleton";
 import { TextL1 } from "./ui/TextComponents";
 import { TitleL2 } from "./ui/TitleComponents";
 
@@ -40,6 +42,7 @@ const ProductsSection = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [page, setPage] = useState(1);
+  const user = useUser();
 
   const [currentFilter, setCurrentFilter] = useState<string>("All Products");
   const [currentSorting, setCurrentSorting] = useState<string>();
@@ -118,9 +121,15 @@ const ProductsSection = () => {
       </div>
 
       <div className="cards__container">
-        {filteredProducts.slice(16 * (page - 1), 16 * page).map((product) => (
-          <ProductCard product={product} key={product._id} />
-        ))}
+        {filteredProducts.length && !user.isLoading
+          ? filteredProducts
+              .slice(16 * (page - 1), 16 * page)
+              .map((product) => (
+                <ProductCard product={product} key={product._id} />
+              ))
+          : Array.apply(null, Array(16)).map((_, index) => (
+              <ProductCardSkeleton key={index} />
+            ))}
       </div>
       <div className="bottom__pager">
         <TextL1 color="gradient">
