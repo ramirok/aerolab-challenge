@@ -1,16 +1,13 @@
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
-import AerolabIcon from "../assets/aerolabIcon.svg";
-import AerolabIconBlack from "../assets/aerolabIconBlack.svg";
 import ArrowUpIcon from "../assets/arrowUpIcon.svg";
-import AerolabIconWhite from "../assets/aerolabIconWhite.svg";
 import { Button } from "./ui/ButtonComponents";
 import { OptionSelector } from "./ui/SelectorComponents";
 import { TextL1, TextL2 } from "./ui/TextComponents";
-import { UserData } from "../types";
 import Spinner from "./ui/Spinner";
 import { useUser } from "../context/userContext";
+import AerolabIconSvg from "../assets/AerolabIconSvg";
 
 const Container = styled.div`
   position: relative;
@@ -141,7 +138,7 @@ const DropdownMenu = () => {
         className="menuButton"
         onClick={() => setMenuIsVisible((prev) => !prev)}
       >
-        <Image src={AerolabIcon} alt="aerolab" height={32} width={32} />
+        <AerolabIconSvg height={32} width={32} />
         <TextL1 color="gradient">
           {user.isLoading ? <Spinner color="dark" /> : user.userData.points}
         </TextL1>
@@ -162,9 +159,7 @@ const DropdownMenu = () => {
           <TextL1 color="white" className="card__company">
             AeroCard
           </TextL1>
-          <span className="card__logo">
-            <Image src={AerolabIconBlack} alt="aerolab" />
-          </span>
+          <AerolabIconSvg className="card__logo" bg="white" color="dark" />
           <TextL2 color="white" className="card__name">
             {user.userData.name}
           </TextL2>
@@ -197,7 +192,7 @@ const DropdownMenu = () => {
               <Spinner />
             ) : (
               <>
-                <Image src={AerolabIconWhite} alt="aerolab icon" /> Add Point
+                <AerolabIconSvg bg="white" color="gradient" /> Add Point
               </>
             )}
           </Button>

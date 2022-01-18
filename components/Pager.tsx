@@ -1,6 +1,5 @@
-import Image from "next/image";
 import styled from "styled-components";
-import Arrow from "../assets/arrowUpIcon.svg";
+import PageArrowIcon from "../assets/PageArrowIcon";
 import { TextL1 } from "./ui/TextComponents";
 
 const Container = styled.div`
@@ -26,13 +25,15 @@ const Container = styled.div`
     &:hover:enabled {
       border: 1px solid #7c899c;
     }
+    &:disabled {
+      background-color: #e6edf7;
+      & svg {
+        stroke: #dae4f2;
+      }
+    }
     &-left {
       transform: rotate(90deg);
       margin-right: 20px;
-
-      &:disabled {
-        background-color: #e6edf7;
-      }
 
       &:hover:enabled {
         transform: rotate(90deg) scale(1.03);
@@ -41,6 +42,7 @@ const Container = styled.div`
     &-right {
       transform: rotate(-90deg);
       margin-left: 20px;
+
       &:hover:enabled {
         transform: rotate(-90deg) scale(1.03);
       }
@@ -75,7 +77,7 @@ const Pager = ({
         onClick={prevPage}
         disabled={page === 1}
       >
-        <Image src={Arrow} alt="left arrow" width={20} height={20} />
+        <PageArrowIcon />
       </button>
       <TextL1 nowrap>Page </TextL1>
       <TextL1 color="gradient">
@@ -86,7 +88,7 @@ const Pager = ({
         onClick={nextPage}
         disabled={page === totalPageCount}
       >
-        <Image src={Arrow} alt="right arrow" width={20} height={20} />
+        <PageArrowIcon />
       </button>
     </Container>
   );

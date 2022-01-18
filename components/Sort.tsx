@@ -1,9 +1,8 @@
-import React, { memo } from "react";
+import React from "react";
 import styled from "styled-components";
 import { TextL1 } from "./ui/TextComponents";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { OptionSelector } from "./ui/SelectorComponents";
-import { Product } from "../types";
 
 const Container = styled.div`
   display: flex;

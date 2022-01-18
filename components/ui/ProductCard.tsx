@@ -3,11 +3,10 @@ import styled from "styled-components";
 import { Product } from "../../types";
 import { Button } from "./ButtonComponents";
 import { TextL1, TextL2 } from "./TextComponents";
-import AerolabIconWhite from "../../assets/aerolabIconWhite.svg";
-import AerolabSkeleton from "../../assets/aerolabSkeleton.svg";
 import { useState } from "react";
 import { useUser } from "../../context/userContext";
 import toasts from "../../lib/Toasts";
+import AerolabIconSvg from "../../assets/AerolabIconSvg";
 
 interface ProductProps {
   product: Product;
@@ -116,12 +115,12 @@ const ProductCard = ({ product }: ProductProps) => {
           "Processing..."
         ) : user.userData.points < product.cost ? (
           <>
-            You need <Image src={AerolabIconWhite} alt="aerolab icon" />
+            You need <AerolabIconSvg color="white" bg="gray" />
             {" " + (product.cost - user.userData.points) + " more"}
           </>
         ) : (
           <>
-            Redeem for <Image src={AerolabIconWhite} alt="aerolab icon" />
+            Redeem for <AerolabIconSvg bg="white" color="gradient" />
             {" " + product.cost}
           </>
         )}

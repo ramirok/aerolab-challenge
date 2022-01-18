@@ -10,14 +10,13 @@ import toasts from "../lib/Toasts";
 const Layout = styled.div`
   max-width: 1446px;
   margin: 0 auto;
-  position: relative;
 
   // waves background
   &:before {
     content: "";
     top: 150px;
-    left: -237px;
-    right: -237px;
+    width: 100%;
+    left: 0;
     height: 1300px;
     z-index: -10;
     position: absolute;

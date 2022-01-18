@@ -40,18 +40,19 @@ const TopBar = () => {
   const [isPinned, setIsPinned] = useState(false);
 
   useEffect(() => {
+    const bar = containerRef.current;
     const observer = new IntersectionObserver(
       ([e]) => {
         setIsPinned(!e.isIntersecting);
       },
       { threshold: 1, root: null, rootMargin: "0px" }
     );
-    if (containerRef.current) {
-      observer.observe(containerRef.current!);
+    if (bar) {
+      observer.observe(bar);
     }
 
     return () => {
-      if (containerRef.current) observer.unobserve(containerRef.current);
+      if (bar) observer.unobserve(bar);
     };
   }, [containerRef]);
 

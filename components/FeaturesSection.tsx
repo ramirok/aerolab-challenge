@@ -8,7 +8,6 @@ import Icon2 from "../assets/featuresCards/icon2.svg";
 import Icon3 from "../assets/featuresCards/icon3.svg";
 
 const Container = styled.section`
-  position: relative;
   margin-top: 100px;
   display: flex;
   justify-content: center;
@@ -30,8 +29,8 @@ const Container = styled.section`
     content: "";
     position: absolute;
     height: 528px;
-    left: -237px;
-    right: -237px;
+    width: 100%;
+    top: 1050px;
     bottom: 40px;
     z-index: -2;
     background-image: linear-gradient(

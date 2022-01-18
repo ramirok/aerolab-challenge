@@ -1,12 +1,6 @@
 import Image from "next/image";
 import styled from "styled-components";
-import { Button } from "./ButtonComponents";
-import { TextL1, TextL2 } from "./TextComponents";
-import AerolabIconWhite from "../../assets/aerolabIconWhite.svg";
 import AerolabSkeleton from "../../assets/aerolabSkeleton.svg";
-import { useState } from "react";
-import { useUser } from "../../context/userContext";
-import toasts from "../../lib/Toasts";
 
 const Container = styled.div`
   display: flex;
