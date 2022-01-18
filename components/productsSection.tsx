@@ -5,10 +5,11 @@ import Filter from "./FIlter";
 import Pager from "./Pager";
 import Sort from "./Sort";
 import ProductCard from "./ui/ProductCard";
+import { TextL1 } from "./ui/TextComponents";
 import { TitleL2 } from "./ui/TitleComponents";
 
 const Container = styled.section`
-  margin-top: 235px;
+  padding-top: 235px;
 
   & .toolbar__container {
     display: flex;
@@ -25,6 +26,13 @@ const Container = styled.section`
 
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-column-gap: 24px;
+  }
+
+  & .bottom__pager {
+    display: flex;
+    width: 55%;
+    justify-content: space-between;
+    margin-left: auto;
   }
 `;
 
@@ -88,7 +96,7 @@ const ProductsSection = () => {
     fetchProducts();
   }, []);
   return (
-    <Container>
+    <Container id="products">
       <TitleL2 color="gradient">tech</TitleL2>
       <TitleL2> products</TitleL2>
       <div className="toolbar__container">
@@ -113,6 +121,17 @@ const ProductsSection = () => {
         {filteredProducts.slice(16 * (page - 1), 16 * page).map((product) => (
           <ProductCard product={product} key={product._id} />
         ))}
+      </div>
+      <div className="bottom__pager">
+        <TextL1 color="gradient">
+          16 of {filteredProducts.length} products
+        </TextL1>
+        <Pager
+          page={page}
+          setPage={setPage}
+          totalCount={filteredProducts.length}
+          pageSize={16}
+        />
       </div>
     </Container>
   );

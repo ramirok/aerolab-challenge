@@ -5,6 +5,7 @@ interface ButtonProps {
   children: React.ReactNode;
   secondary?: boolean;
   disabled?: boolean;
+  loading?: boolean;
   onClick?: () => void;
   color?: "black" | "gray" | "white" | "gradient";
 }
@@ -14,7 +15,12 @@ const ButtonStyles = styled.button<ButtonProps>`
   border-radius: ${({ secondary }) => (secondary ? "16px" : "24px")};
   height: ${({ secondary }) => (secondary ? "50px" : "80px")};
   padding: 0 35px;
-  background: linear-gradient(102.47deg, #176feb -5.34%, #ff80ff 106.58%);
+
+  background: ${({ loading }) =>
+    loading
+      ? "linear-gradient(102.47deg, rgba(23, 111, 235, 0.7) -5.34%, rgba(255, 128, 255, 0.7) 106.58%);"
+      : "linear-gradient(102.47deg, #176feb -5.34%, #ff80ff 106.58%);"}
+    
   position: relative;
   display: flex;
   align-items: center;

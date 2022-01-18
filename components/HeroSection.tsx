@@ -5,6 +5,7 @@ import DownArrow from "../assets/arrowDownIcon.svg";
 import { Button } from "./ui/ButtonComponents";
 import { TextL1 } from "./ui/TextComponents";
 import { TitleL1 } from "./ui/TitleComponents";
+import Link from "next/link";
 
 const Container = styled.section`
   display: flex;
@@ -48,10 +49,12 @@ const HeroSection = () => {
           Here you’ll be able to exchange all of your hard-earned Aeropoints and
           exchange them for cool tech.
         </TextL1>
-        <Button color="white">
-          VIEW ALL PRODUCTS{"    "}
-          <Image src={DownArrow} alt="arrow down" width={14} height={17} />
-        </Button>
+        <Link href="#products" passHref>
+          <Button color="white">
+            VIEW ALL PRODUCTS{"    "}
+            <Image src={DownArrow} alt="arrow down" width={14} height={17} />
+          </Button>
+        </Link>
       </div>
       <div className="imgContainer">
         <Image

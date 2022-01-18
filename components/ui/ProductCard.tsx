@@ -6,6 +6,7 @@ import { TextL1, TextL2 } from "./TextComponents";
 import AerolabIconWhite from "../../assets/aerolabIconWhite.svg";
 import { useState } from "react";
 import { useUser } from "../../context/userContext";
+import toasts from "../../lib/Toasts";
 
 interface ProductProps {
   product: Product;
@@ -70,6 +71,10 @@ const ProductCard = ({ product }: ProductProps) => {
     );
     if (response.ok) {
       user.addRemoveUserPoints(-product.cost);
+
+      toasts.success(product.name);
+    } else {
+      toasts.fail("There was a problem with the transaction");
     }
     setIsLoading(false);
   };
@@ -87,6 +92,7 @@ const ProductCard = ({ product }: ProductProps) => {
       </div>
       <Button
         secondary
+        loading={isLoading}
         disabled={user.userData.points < product.cost}
         color="white"
         onClick={() => {
@@ -98,7 +104,7 @@ const ProductCard = ({ product }: ProductProps) => {
         ) : user.userData.points < product.cost ? (
           <>
             You need <Image src={AerolabIconWhite} alt="aerolab icon" />
-            {" " + product.cost}
+            {" " + (product.cost - user.userData.points) + " more"}
           </>
         ) : (
           <>

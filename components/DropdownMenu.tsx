@@ -191,6 +191,7 @@ const DropdownMenu = () => {
             secondary
             disabled={!Boolean(pointsSelected)}
             onClick={() => addPoints(pointsSelected)}
+            color="white"
           >
             {isLoading ? (
               <Spinner />
