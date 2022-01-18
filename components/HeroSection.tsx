@@ -64,6 +64,7 @@ const HeroSection = () => {
           alt="man with tech products"
           width={700}
           height={700}
+          priority
         />
       </div>
     </Container>
