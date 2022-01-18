@@ -4,6 +4,7 @@ import { Product } from "../../types";
 import { Button } from "./ButtonComponents";
 import { TextL1, TextL2 } from "./TextComponents";
 import AerolabIconWhite from "../../assets/aerolabIconWhite.svg";
+import AerolabSkeleton from "../../assets/aerolabSkeleton.svg";
 import { useState } from "react";
 import { useUser } from "../../context/userContext";
 import toasts from "../../lib/Toasts";
@@ -41,6 +42,12 @@ const Container = styled.div`
       transition: all 0.2s;
       &:hover {
         transform: scale(1.2);
+      }
+
+      & .placeholder {
+        background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzgiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3OCA3MiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02MS43MzY1IDAuODA5MDlDNjEuMjgxMiAwLjAzNTQ1NzcgNjAuMjcyNiAtMC4yMjk3OSA1OS40ODQ0IDAuMjE3MDY0TDMyLjQ5NjUgMTUuNTA5M0MzMS44ODIzIDE1Ljg1NzYgMzEuNTYzNCAxNi41NTMgMzEuNzA1OCAxNy4yMzUyTDQwLjc4ODUgNjAuNzk3NkM0MC44MzIzIDYxLjAwNzQgNDAuNzQxNiA2MS4zMTcyIDQwLjYwNDEgNjEuNDY5M0wzOS41MDA2IDYyLjY5MDdDMzcuMjA2NSA2NS4yMzAzIDM1LjI2MyA2Ni42MDYxIDMxLjU2ODggNjYuNjA2MUMyNy40MjY3IDY2LjYwNjEgMjUuNDgyIDY0LjQ2MzIgMjIuNDAyNyA2MC42NzU3QzE4LjcyNSA1Ni4xNTI4IDE0LjE0ODkgNTAuNTI0MSAzLjAyMjczIDUwLjUyNDFIMi43NDc2QzEuMjMwMTUgNTAuNTI0MSAwIDUxLjczMTQgMCA1My4yMjA3QzAgNTQuNzEwMSAxLjIzMDE1IDU1LjkxNzQgMi43NDc2IDU1LjkxNzRIMy4wMjI3M0MxMS41MDI5IDU1LjkxNzQgMTQuNzEwNyA1OS44NjI2IDE4LjEwNzIgNjQuMDM5NkMyMS4xNDA4IDY3Ljc3MSAyNC41NzkzIDcyIDMxLjU2ODggNzJDMzcuNjAyNyA3MiA0MC45MjMxIDY5LjI0NTQgNDMuNjEyMyA2Ni4yNjkxTDUzLjUzMTQgNTUuMjkxM0M1My41MzE0IDU1LjI5MDcgNzcuMTIzNCAyOS4xNzkgNzcuMTIzNCAyOS4xNzlDNzcuNTkzOSAyOC42NTgxIDc3LjY3MjUgMjcuOSA3Ny4zMTc2IDI3LjI5NjZMNjEuNzM2NSAwLjgwOTA5WiIgZmlsbD0iI0U2RURGNyIvPgo8L3N2Zz4K");
+        background-repeat: no-repeat;
+        background-position: center;
       }
     }
 
@@ -83,7 +90,13 @@ const ProductCard = ({ product }: ProductProps) => {
     <Container>
       <div className="card">
         <div className="card__img">
-          <Image src={product.img.url} alt="product" width={280} height={200} />
+          <Image
+            src={product.img.url}
+            alt="product"
+            width={280}
+            height={200}
+            className="placeholder"
+          />
         </div>
         <div className="card__content">
           <TextL1 color="black">{product.name}</TextL1>
@@ -92,7 +105,7 @@ const ProductCard = ({ product }: ProductProps) => {
       </div>
       <Button
         secondary
-        loading={isLoading}
+        $loading={isLoading}
         disabled={user.userData.points < product.cost}
         color="white"
         onClick={() => {
