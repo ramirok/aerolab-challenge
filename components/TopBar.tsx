@@ -10,14 +10,28 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 20px 0;
-  padding: 20px;
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
   position: sticky;
   top: -1px;
   z-index: 20;
-  background-color: white;
-  border-radius: 24px;
+  &:before {
+    background-color: white;
+    content: "";
+    position: absolute;
+    height: 100%;
+    border-radius: 24px;
+    width: 100%;
+    top: 10px;
+    left: 0;
+  }
   &.is-pinned {
-    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+    &:before {
+      box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+      border: 1px solid #dae4f2;
+    }
   }
 `;
 
