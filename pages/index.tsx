@@ -30,7 +30,7 @@ export default Home;
 const StyledLayout = styled.div`
   max-width: 1446px;
   margin: 0 auto;
-  width: 98%;
+  width: 94%;
 
   @media screen and (min-width: 1024px) {
     width: 90%;

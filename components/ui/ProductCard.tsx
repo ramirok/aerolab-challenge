@@ -56,7 +56,9 @@ const ProductCard = ({ product }: ProductProps) => {
         disabled={user.userData.points < product.cost}
         color="white"
         onClick={() => {
-          redeemProduct(product._id);
+          // redeemProduct(product._id);
+          toasts.fail("There was a problem with the transaction");
+          toasts.success(product.name);
         }}
       >
         {isLoading ? (
@@ -84,7 +86,6 @@ const StyledContainer = styled.div`
   flex-direction: column;
   align-items: stretch;
   margin-bottom: 80px;
-  // max-width: 335px;
 `;
 
 const StyledProductCard = styled.div`
