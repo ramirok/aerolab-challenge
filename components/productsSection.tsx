@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useUser } from "../context/userContext";
+import { Get } from "../lib/FetchService";
 import { Product } from "../types";
 import Filter from "./FIlter";
 import Pager from "./Pager";
@@ -55,18 +56,11 @@ const ProductsSection = () => {
   };
 
   const fetchProducts = async () => {
-    const response = await fetch(
-      "https://coding-challenge-api.aerolab.co/products",
-      {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWUyZDZhMWJjNDgzYTAwMjE2ZGE5NjgiLCJpYXQiOjE2NDIyNTYwMzN9.VVA-ablaYVIMKITor6C3F5DnVb9CjfrD-egzU_mAwyY",
-        },
-      }
-    );
-    const parsedResponse: Product[] = await response.json();
-    setProducts(parsedResponse);
-    setFilteredProducts(parsedResponse);
+    const response = await Get("products");
+    if (response.success) {
+      setProducts(response.data);
+      setFilteredProducts(response.data);
+    }
   };
 
   useEffect(() => {

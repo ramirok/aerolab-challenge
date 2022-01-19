@@ -8,6 +8,8 @@ import { TextL1, TextL2 } from "./ui/TextComponents";
 import Spinner from "./ui/Spinner";
 import { useUser } from "../context/userContext";
 import AerolabIconSvg from "../assets/AerolabIconSvg";
+import { Post } from "../lib/FetchService";
+import toasts from "../lib/Toasts";
 
 const DropdownMenu = () => {
   const [menuIsVisible, setMenuIsVisible] = useState(false);
@@ -19,21 +21,12 @@ const DropdownMenu = () => {
 
   const addPoints = async (points: number) => {
     setIsLoading(true);
-    const response = await fetch(
-      "https://coding-challenge-api.aerolab.co/user/points",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWUyZDZhMWJjNDgzYTAwMjE2ZGE5NjgiLCJpYXQiOjE2NDIyNTYwMzN9.VVA-ablaYVIMKITor6C3F5DnVb9CjfrD-egzU_mAwyY",
-        },
-        body: JSON.stringify({ amount: points }),
-      }
-    );
-    if (response.ok) {
+    const response = await Post("user/points", { amount: points });
+    if (response.success) {
       setPointsSelected(NaN);
       user.addRemoveUserPoints(points);
+    } else {
+      toasts.fail("There was a problem while adding points");
     }
     setIsLoading(false);
   };

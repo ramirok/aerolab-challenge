@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useUser } from "../../context/userContext";
 import toasts from "../../lib/Toasts";
 import AerolabIconSvg from "../../assets/AerolabIconSvg";
+import { Post } from "../../lib/FetchService";
 
 interface ProductProps {
   product: Product;
@@ -17,19 +18,8 @@ const ProductCard = ({ product }: ProductProps) => {
 
   const redeemProduct = async (id: string) => {
     setIsLoading(true);
-    const response = await fetch(
-      "https://coding-challenge-api.aerolab.co/redeem",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWUyZDZhMWJjNDgzYTAwMjE2ZGE5NjgiLCJpYXQiOjE2NDIyNTYwMzN9.VVA-ablaYVIMKITor6C3F5DnVb9CjfrD-egzU_mAwyY",
-        },
-        body: JSON.stringify({ productId: id }),
-      }
-    );
-    if (response.ok) {
+    const response = await Post("redeem", { productId: id });
+    if (response.success) {
       user.addRemoveUserPoints(-product.cost);
       toasts.success(product.name);
     } else {
@@ -56,9 +46,7 @@ const ProductCard = ({ product }: ProductProps) => {
         disabled={user.userData.points < product.cost}
         color="white"
         onClick={() => {
-          // redeemProduct(product._id);
-          toasts.fail("There was a problem with the transaction");
-          toasts.success(product.name);
+          redeemProduct(product._id);
         }}
       >
         {isLoading ? (
