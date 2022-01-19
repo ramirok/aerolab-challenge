@@ -99,7 +99,12 @@ const DropdownMenu = () => {
                 <Spinner />
               ) : (
                 <>
-                  <AerolabIconSvg bg="white" color="gradient" /> Add Point
+                  {!Boolean(pointsSelected) ? (
+                    <AerolabIconSvg bg="gray" color="white" />
+                  ) : (
+                    <AerolabIconSvg bg="white" color="gradient" />
+                  )}{" "}
+                  Add Point
                 </>
               )}
             </Button>
