@@ -41,13 +41,21 @@ export default FeatureCard;
 
 const StyledContainer = styled.div`
   height: min-content;
-  width: 532px;
   border: 1px solid #dae4f2;
   border-radius: 32px;
-  background-color: white;
+  background-color: #ffffff99;
   padding: 12px;
   z-index: 0;
   transition: all 0.2s;
+  margin-bottom: 24px;
+  width: 335px;
+
+  @media screen and (min-width: 900px) {
+    width: 300px;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 532px;
+  }
 
   &:hover {
     z-index: 10;
@@ -60,6 +68,7 @@ const StyledContainer = styled.div`
   }
 
   .card__img {
+    background-color: white;
     border-top-left-radius: 23px;
     border-top-right-radius: 23px;
     background-image: linear-gradient(
@@ -67,17 +76,24 @@ const StyledContainer = styled.div`
       rgba(23, 111, 235, 0.5) -5.34%,
       rgba(255, 128, 255, 0.5) 106.58%
     );
+
+    overflow: hidden;
+
     & img {
       transition: all 0.2s;
     }
   }
 
   .card__content {
+    background-color: white;
     padding: 16px;
     border: 1px solid #dae4f2;
     border-top: none;
     border-bottom-left-radius: 23px;
     border-bottom-right-radius: 23px;
+    @media screen and (min-width: 1024px) {
+      height: 170px;
+    }
   }
 
   .card__title {

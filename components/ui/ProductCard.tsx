@@ -84,6 +84,7 @@ const StyledContainer = styled.div`
   flex-direction: column;
   align-items: stretch;
   margin-bottom: 80px;
+  // max-width: 335px;
 `;
 
 const StyledProductCard = styled.div`

@@ -53,7 +53,15 @@ const StyledContainer = styled.div`
   border: 1px solid #dae4f2;
   padding: 8px;
   border-radius: 12px;
-  width: 240px;
+  width: 80%;
+
+  @media screen and (min-width: 769px) {
+    width: 240px;
+    margin-left: auto;
+  }
+
+  @media screen and (min-width: 1024px) {
+  }
 `;
 
 const StyledButtonArrow = styled.button`

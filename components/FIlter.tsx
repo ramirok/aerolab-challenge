@@ -63,7 +63,22 @@ export default Filter;
 const StyledContainer = styled.div`
    {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     position: relative;
+    width: 80%;
+  }
+
+  @media screen and (min-width: 769px) {
+    width: 33%;
+  }
+  @media screen and (min-width: 1024px) {
+    flex-direction: row;
+    width: 25%;
+    min-width: 400px;
+    margin-right: 40px;
+    padding-right: 40px;
+
     &:after {
       content: "";
       position: absolute;
@@ -76,11 +91,11 @@ const StyledContainer = styled.div`
 `;
 const StyledDropDown = styled.div`
   position: relative;
-  margin-left: 16px;
-  margin-right: 40px;
+  width: 100%;
+  // margin-left: 16px;
+  // margin-right: 40px;
 
   & .dropdown__button {
-    width: 250px;
     display: flex;
     justify-content: space-between;
     align-items: center;

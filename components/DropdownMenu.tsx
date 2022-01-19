@@ -41,7 +41,7 @@ const DropdownMenu = () => {
   return (
     <StyledContainer>
       <StyledMenuButton onClick={() => setMenuIsVisible((prev) => !prev)}>
-        <AerolabIconSvg height={32} width={32} />
+        <AerolabIconSvg height={24} width={24} />
         <TextL1 color="gradient">
           {user.isLoading ? <Spinner color="dark" /> : user.userData.points}
         </TextL1>
@@ -121,12 +121,21 @@ const StyledMenuButton = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 8px 16px;
-  width: 156px;
-  height: 48px;
+  width: 140px;
+  height: 40px;
   border: 1px solid #dae4f2;
   border-radius: 16px;
   transition: all 0.2s;
   cursor: pointer;
+
+  @media screen and (min-width: 1024px) {
+    width: 156px;
+    height: 48px;
+    & > svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
   &:hover {
     transform: scale(1.03);
     border: 1px solid #7c899c;

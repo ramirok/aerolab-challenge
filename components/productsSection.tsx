@@ -110,7 +110,10 @@ const ProductsSection = () => {
 
       <StyledBottomPager>
         <TextL1 color="gradient">
-          {PRODUCTS_PER_PAGE} of {filteredProducts.length} products
+          {filteredProducts.length < PRODUCTS_PER_PAGE
+            ? filteredProducts.length
+            : PRODUCTS_PER_PAGE}{" "}
+          of {filteredProducts.length} products
         </TextL1>
         <Pager
           page={page}
@@ -131,23 +134,37 @@ const StyledContainer = styled.section`
 
 const StyledToolBar = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+
   align-items: center;
-  justify-content: space-between;
+  // justify-content: space-between;
   margin-top: 40px;
+
+  @media screen and (min-width: 769px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
 const StyledProductCards = styled.div`
   display: grid;
   flex-wrap: wrap;
-  justify-content: space-between;
   margin-top: 50px;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-column-gap: 24px;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(335px, 350px));
+  grid-column-gap: 15px;
 `;
 
 const StyledBottomPager = styled.div`
   display: flex;
-  width: 55%;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-between;
-  margin-left: auto;
+
+  @media screen and (min-width: 769px) {
+    flex-direction: row;
+    width: 55%;
+    margin-left: auto;
+  }
 `;

@@ -45,30 +45,47 @@ const FeaturesSection = () => {
 export default FeaturesSection;
 
 const StyledContainer = styled.section`
-  margin-top: 100px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-top: -20px;
 
-  & > *:first-child {
-    transform: rotate(-2deg);
-    margin-top: 30px;
-    margin-right: -80px;
+  @media screen and (min-width: 900px) {
+    flex-direction: row;
+    justify-content: space-between;
   }
 
-  & > *:last-child {
-    transform: rotate(2deg);
-    margin-top: 30px;
-    margin-left: -80px;
+  @media screen and (min-width: 1024px) {
+    align-items: flex-start;
+    justify-content: center;
+    & > *:first-child {
+      transform: rotate(-2deg);
+      margin-top: 30px;
+      margin-right: -80px;
+    }
+
+    & > *:last-child {
+      transform: rotate(2deg);
+      margin-top: 30px;
+      margin-left: -80px;
+    }
+  }
+
+  @media screen and (min-width: 1514px) {
+    margin-top: 100px;
   }
 
   //   gradient background
   &::after {
+    top: -320px;
+    height: 125%;
     content: "";
     position: absolute;
-    height: 528px;
-    width: 100%;
-    top: 1050px;
-    bottom: 40px;
+    // width: 100%;
+    left: calc(100% - 100vw);
+    right: calc(calc(100% - 100vw) / 2);
+
     z-index: -2;
     background-image: linear-gradient(
       102.47deg,
@@ -76,5 +93,14 @@ const StyledContainer = styled.section`
       rgba(255, 128, 255, 0.5) 106.58%
     );
     background-color: transparent;
+
+    @media screen and (min-width: 900px) {
+      top: -150px;
+      height: 650px;
+    }
+    @media screen and (min-width: 1024px) {
+      top: 80px;
+      height: 528px;
+    }
   }
 `;

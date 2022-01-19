@@ -7,7 +7,7 @@ interface TextProps {
 
 export const TextL1 = styled.div<TextProps>`
   font-family: "Montserrat", sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   line-height: 150%;
   letter-spacing: 0;
@@ -26,6 +26,10 @@ export const TextL1 = styled.div<TextProps>`
 
   ${({ allCaps }) =>
     allCaps ? "text-transform: uppercase;letter-spacing: 4px;" : ""}
+
+  @media screen and (min-width: 1024px) {
+    font-size: 18px;
+  }
 `;
 
 export const TextL2 = styled(TextL1)`

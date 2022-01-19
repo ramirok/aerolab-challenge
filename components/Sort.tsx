@@ -16,16 +16,23 @@ const Sort = ({ handleChangeSorting, currentSorting }: SortProps) => {
       <TextL1>Sort By: </TextL1>
       <StyledSortOptions className="sortOptions">
         {options.map((option) => (
-          <div
+          // <div
+          //   key={option}
+          //   onClick={() => {
+          //     handleChangeSorting(option);
+          //   }}
+          // >
+          <OptionSelector
+            large
+            active={currentSorting === option}
             key={option}
             onClick={() => {
               handleChangeSorting(option);
             }}
           >
-            <OptionSelector large active={currentSorting === option}>
-              {option}
-            </OptionSelector>
-          </div>
+            {option}
+          </OptionSelector>
+          // </div>
         ))}
       </StyledSortOptions>
     </StyledSortContainer>
@@ -37,13 +44,37 @@ export default Sort;
 // styles
 const StyledSortContainer = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  margin-right: 150px;
+  width: 80%;
+  @media screen and (min-width: 769px) {
+    width: 66%;
+  }
+
+  @media screen and (min-width: 1024px) {
+    flex-direction: row;
+    width: 50%;
+  }
 `;
 
 const StyledSortOptions = styled.div`
   display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @media screen and (min-width: 769px) {
+    flex-direction: row;
+  }
+
   & > div {
-    margin-left: 12px;
+    width: 100%;
+    margin-bottom: 12px;
+    @media screen and (min-width: 769px) {
+      margin-left: 12px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      margin-bottom: 0px;
+    }
   }
 `;

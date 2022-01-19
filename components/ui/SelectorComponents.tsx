@@ -3,13 +3,11 @@ import { TextL1 } from "./TextComponents";
 interface SelectorProps {
   active?: boolean;
   large?: boolean;
+  children: React.ReactNode;
+  onClick?: () => void;
 }
 
-export const OptionSelector = (props: {
-  children: React.ReactNode;
-  active?: boolean;
-  large?: boolean;
-}) => (
+export const OptionSelector = (props: SelectorProps) => (
   <OptionSelectorStyle {...props}>
     <TextL1 color={props.active ? "white" : "gradient"} nowrap>
       {props.children}

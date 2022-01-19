@@ -13,7 +13,7 @@ interface ButtonProps {
 const ButtonStyles = styled.button<ButtonProps>`
   border: 0;
   border-radius: ${({ secondary }) => (secondary ? "16px" : "24px")};
-  height: ${({ secondary }) => (secondary ? "50px" : "80px")};
+  height: ${({ secondary }) => (secondary ? "50px" : "64px")};
   padding: 0 35px;
 
   background: ${({ $loading }) =>
@@ -55,6 +55,11 @@ const ButtonStyles = styled.button<ButtonProps>`
   }
   &:hover:enabled::after {
     opacity: 1;
+  }
+
+
+    @media screen and (min-width: 1024px) {
+    height: ${({ secondary }) => (secondary ? "50px" : "80px")};
   }
 `;
 

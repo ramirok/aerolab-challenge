@@ -45,30 +45,73 @@ export default HeroSection;
 
 const StyledContainer = styled.section`
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
+  gap: 50px;
+
+  @media screen and (min-width: 1024px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
 `;
 
 const StyledTextContent = styled.div`
-  max-width: 600px;
-  align-self: flex-end;
-  & button {
-    margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 300px;
+
+  @media screen and (min-width: 1024px) {
+    align-self: flex-end;
+    max-width: 600px;
+  }
+  @media screen and (min-width: 1514px) {
+    display: block;
+    text-align: left;
+  }
+
+  & a {
+    margin-top: 40px;
+    display: inline-block;
+    width: 100%;
+    & button {
+      width: 100%;
+    }
+    @media screen and (min-width: 1024px) {
+      margin-top: 70px;
+    }
+    @media screen and (min-width: 1514px) {
+      width: auto;
+      & button {
+        width: auto;
+      }
+    }
   }
 `;
 
 const StyledImageContent = styled.div`
   position: relative;
+  max-width: 400px;
+
+  @media screen and (min-width: 1024px) {
+    min-width: 700px;
+  }
+
   &::before {
-    content: "";
-    position: absolute;
-    bottom: 2px;
-    left: 50%;
-    width: 100%;
-    height: 85%;
-    transform: translateX(-50%);
-    background: linear-gradient(102.47deg, #7296eb -5.34%, #eac0e9 106.58%);
-    border-radius: 105px;
-    opacity: 0.7;
+    @media screen and (min-width: 1514px) {
+      content: "";
+      position: absolute;
+      bottom: 2px;
+      left: 50%;
+      width: 100%;
+      height: 85%;
+      transform: translateX(-50%);
+      background: linear-gradient(102.47deg, #7296eb -5.34%, #eac0e9 106.58%);
+      border-radius: 105px;
+      opacity: 0.7;
+    }
   }
 `;
