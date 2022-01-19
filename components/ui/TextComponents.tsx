@@ -14,12 +14,16 @@ export const TextL1 = styled.div<TextProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: ${({ color }) =>
-    color == "black" ? '"#252F3D"' : color === "white" ? "white" : "#7c899c"};
+  color: ${({ color, theme }) =>
+    color == "black"
+      ? theme.colors.neutrals[900]
+      : color === "white"
+      ? theme.colors.neutrals[0]
+      : theme.colors.neutrals[600]};
 
-  ${({ color }) =>
+  ${({ color, theme }) =>
     color === "gradient"
-      ? "background: linear-gradient(102.47deg, #176feb -5.34%, #ff80ff 106.58%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;"
+      ? `background: linear-gradient(102.47deg, ${theme.colors.brand.gradientDefault[0]} -5.34%, ${theme.colors.brand.gradientDefault[1]} 106.58%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;`
       : ""}
 
   white-space: ${({ nowrap }) => (nowrap ? "pre" : "")};

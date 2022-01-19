@@ -28,7 +28,7 @@ const StyledContainer = styled.div`
   margin-bottom: 80px;
 
   & .card {
-    background-color: white;
+    background-color: ${({ theme }) => theme.colors.neutrals[0]};
     margin-bottom: 16px;
     border-radius: 16px;
     border: 1px solid #dae4f2;

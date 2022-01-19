@@ -88,7 +88,7 @@ const StyledContainer = styled.div`
 `;
 
 const StyledProductCard = styled.div`
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.neutrals[0]};
   margin-bottom: 16px;
   border-radius: 16px;
   border: 1px solid #dae4f2;
@@ -97,7 +97,7 @@ const StyledProductCard = styled.div`
 
   &:hover {
     transform: scale(1.02);
-    border: 1px solid #7c899c;
+    border: 1px solid ${({ theme }) => theme.colors.neutrals[600]};
     border-radius: 16px;
   }
 

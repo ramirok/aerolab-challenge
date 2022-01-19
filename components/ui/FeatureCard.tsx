@@ -59,7 +59,7 @@ const StyledContainer = styled.div`
 
   &:hover {
     z-index: 10;
-    border: 1px solid #7c899c;
+    border: 1px solid ${({ theme }) => theme.colors.neutrals[600]};
     .card__img {
       & img {
         transform: scale(1.1) rotate(-5deg);
@@ -68,7 +68,7 @@ const StyledContainer = styled.div`
   }
 
   .card__img {
-    background-color: white;
+    background-color: ${({ theme }) => theme.colors.neutrals[0]};
     border-top-left-radius: 23px;
     border-top-right-radius: 23px;
     background-image: linear-gradient(
@@ -85,7 +85,7 @@ const StyledContainer = styled.div`
   }
 
   .card__content {
-    background-color: white;
+    background-color: ${({ theme }) => theme.colors.neutrals[0]};
     padding: 16px;
     border: 1px solid #dae4f2;
     border-top: none;
@@ -103,7 +103,7 @@ const StyledContainer = styled.div`
   }
 
   .card__icon {
-    background-color: #e5f0ff;
+    background-color: ${({ theme }) => theme.colors.brand.light};
     border-radius: 8px;
     padding: 8px;
     margin-right: 16px;

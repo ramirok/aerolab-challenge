@@ -3,6 +3,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { TextL1 } from "../components/ui/TextComponents";
 import CloseIcon from "../assets/x.svg";
 import ErrorIcon from "../assets/error.svg";
+import { theme } from "../components/ui/styleVariables";
 
 const toastSuccess = (title: string) => {
   return toast.success((t) => (
@@ -50,7 +51,7 @@ const ToasterCustom = () => (
     toastOptions={{
       success: {
         style: {
-          border: "2px solid #29CC74",
+          border: `2px solid ${theme.colors.green.default}`,
           padding: "0 27px",
           height: "80px",
           minWidth: "530px",
@@ -59,7 +60,7 @@ const ToasterCustom = () => (
       },
       error: {
         style: {
-          border: "2px solid #E07F4F",
+          border: `2px solid ${theme.colors.red.default}`,
           padding: "0 27px",
           height: "80px",
           minWidth: "530px",

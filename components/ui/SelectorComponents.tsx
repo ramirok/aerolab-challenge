@@ -18,10 +18,10 @@ export const OptionSelector = (props: SelectorProps) => (
 const OptionSelectorStyle = styled.div<SelectorProps>`
   border-radius: 12px;
   border: 1px hidden transparent;
-  background: ${({ active }) =>
+  background: ${({ active, theme }) =>
     active
-      ? "linear-gradient(102.47deg, #176feb -5.34%, #ff80ff 106.58%)"
-      : "#E5F0FF"};
+      ? `linear-gradient(102.47deg, ${theme.colors.brand.gradientDefault[0]} -5.34%, ${theme.colors.brand.gradientDefault[1]} 106.58%)`
+      : theme.colors.brand.light};
   width: min-content;
   height: ${({ large }) => (large ? "43px" : "35px")};
   width: ${({ large }) => (large ? "165px" : "85px")};
@@ -34,6 +34,7 @@ const OptionSelectorStyle = styled.div<SelectorProps>`
 
   &:hover {
     transform: scale(1.03);
-    border: ${({ active }) => (active ? "" : "1px solid #7c899c")};
+    border: ${({ active, theme }) =>
+      active ? "" : `1px solid ${theme.colors.neutrals[600]}`};
   }
 `;

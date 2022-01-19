@@ -16,10 +16,10 @@ const ButtonStyles = styled.button<ButtonProps>`
   height: ${({ secondary }) => (secondary ? "50px" : "64px")};
   padding: 0 35px;
 
-  background: ${({ $loading }) =>
+  background: ${({ $loading, theme }) =>
     $loading
       ? "linear-gradient(102.47deg, rgba(23, 111, 235, 0.7) -5.34%, rgba(255, 128, 255, 0.7) 106.58%);"
-      : "linear-gradient(102.47deg, #176feb -5.34%, #ff80ff 106.58%);"}
+      : `linear-gradient(102.47deg, ${theme.colors.brand.gradientDefault[0]} -5.34%, ${theme.colors.brand.gradientDefault[1]} 106.58%);`}
     
   position: relative;
   display: flex;
@@ -36,7 +36,7 @@ const ButtonStyles = styled.button<ButtonProps>`
     transform: scale(1);
   }
   &:disabled {
-    background: #e6edf7;
+    background: ${({ theme }) => theme.colors.neutrals[200]};
   }
 
   // transition for gradient background
@@ -48,7 +48,9 @@ const ButtonStyles = styled.button<ButtonProps>`
     bottom: 0;
     left: 0;
     border-radius: 24px;
-    background: linear-gradient(102.47deg, #1667d9 -5.34%, #f279f2 106.58%);
+    background: linear-gradient(102.47deg, ${({ theme }) =>
+      theme.colors.brand.gradientHover[0]} -5.34%, ${({ theme }) =>
+  theme.colors.brand.gradientHover[1]} 106.58%);
     z-index: -1;
     transition: opacity 0.1s linear;
     opacity: 0;
@@ -65,7 +67,7 @@ const ButtonStyles = styled.button<ButtonProps>`
 
 export const Button = (props: ButtonProps) => (
   <ButtonStyles {...props}>
-    <TextL1 color={props.disabled ? "black" : props.color} nowrap>
+    <TextL1 color={props.disabled ? "gray" : props.color} nowrap>
       {props.children}
     </TextL1>
   </ButtonStyles>

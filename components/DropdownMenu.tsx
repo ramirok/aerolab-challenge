@@ -138,11 +138,11 @@ const StyledMenuButton = styled.div`
   }
   &:hover {
     transform: scale(1.03);
-    border: 1px solid #7c899c;
+    border: 1px solid ${({ theme }) => theme.colors.neutrals[600]};
   }
 `;
 const StyledMenuPanel = styled.div`
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.neutrals[0]};
   position: absolute;
   border: 1px solid #dae4f2;
   padding: 16px 16px;
@@ -191,7 +191,7 @@ const StyledMenuPanel = styled.div`
       width: 265px;
       margin-top: 16px;
       height: 150px;
-      background-color: #252f3d;
+      background-color: ${({ theme }) => theme.colors.neutrals[900]};
       border-radius: 8px;
       padding: 16px;
       position: relative;

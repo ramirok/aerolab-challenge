@@ -31,10 +31,17 @@ const StyledContainer = styled.div<SpinnerProps>`
     height: 100%;
     // margin: 8px;
     margin: auto;
-    border: 3px solid ${({ color }) => (color === "dark" ? "#7C899C" : "white")};
+    border: 3px solid
+      ${({ color, theme }) =>
+        color === "dark"
+          ? theme.colors.neutrals[600]
+          : theme.colors.neutrals[0]};
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: ${({ color }) => (color === "dark" ? "#7C899C" : "white")}
+    border-color: ${({ color, theme }) =>
+        color === "dark"
+          ? theme.colors.neutrals[600]
+          : theme.colors.neutrals[0]}
       transparent transparent transparent;
   }
   & div:nth-child(1) {

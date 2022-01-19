@@ -106,7 +106,7 @@ const StyledDropDown = styled.div`
     transition: all 0.2s;
     &:hover {
       transform: scale(1.03);
-      border: 1px solid #7c899c;
+      border: 1px solid ${({ theme }) => theme.colors.neutrals[600]};
     }
   }
 
@@ -123,7 +123,7 @@ const StyledDropDown = styled.div`
     padding: 0;
     transition: all 0.2s;
     z-index: 10;
-    background-color: white;
+    background-color: ${({ theme }) => theme.colors.neutrals[0]};
     &.active {
       visibility: visible;
       opacity: 1;
@@ -134,7 +134,7 @@ const StyledDropDown = styled.div`
       padding: 16px 24px;
       cursor: pointer;
       &:hover {
-        background-color: #f5f9ff;
+        background-color: ${({ theme }) => theme.colors.neutrals[100]};
       }
     }
   }

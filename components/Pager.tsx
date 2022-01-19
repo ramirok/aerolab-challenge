@@ -65,7 +65,7 @@ const StyledContainer = styled.div`
 `;
 
 const StyledButtonArrow = styled.button`
-  background-color: #e5f0ff;
+  background-color: ${({ theme }) => theme.colors.brand.light};
   border-radius: 8px;
   width: 40px;
   height: 40px;
@@ -77,10 +77,10 @@ const StyledButtonArrow = styled.button`
   transition: all 0.2s;
 
   &:hover:enabled {
-    border: 1px solid #7c899c;
+    border: 1px solid ${({ theme }) => theme.colors.neutrals[600]};
   }
   &:disabled {
-    background-color: #e6edf7;
+    background-color: ${({ theme }) => theme.colors.neutrals[200]};
     & svg {
       stroke: #dae4f2;
     }

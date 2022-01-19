@@ -59,7 +59,7 @@ const StyledTopBar = styled.div`
   top: -1px;
   z-index: 20;
   &:before {
-    background-color: white;
+    background-color: ${({ theme }) => theme.colors.neutrals[0]};
     content: "";
     position: absolute;
     height: 100%;

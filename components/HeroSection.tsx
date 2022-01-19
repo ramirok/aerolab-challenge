@@ -109,7 +109,12 @@ const StyledImageContent = styled.div`
       width: 100%;
       height: 85%;
       transform: translateX(-50%);
-      background: linear-gradient(102.47deg, #7296eb -5.34%, #eac0e9 106.58%);
+      background: linear-gradient(
+        102.47deg,
+        ${({ theme }) => theme.colors.specials.gradientIllustrationBG[0]} -5.34%,
+        ${({ theme }) => theme.colors.specials.gradientIllustrationBG[1]}
+          106.58%
+      );
       border-radius: 105px;
       opacity: 0.7;
     }

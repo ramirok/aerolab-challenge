@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 interface Props {
   width?: number;
   height?: number;
@@ -6,26 +8,34 @@ interface Props {
   bg?: "white" | "dark" | "gradient" | "gray";
 }
 
-const AerolabIconSvg = ({
-  width = 24,
-  height = 24,
-  color = "white",
-  className,
-  bg,
-}: Props) => {
+const StyledSvg = styled.svg<Props>`
+  fill: ${({ color = "white", theme }) =>
+    color === "white"
+      ? theme.colors.neutrals[0]
+      : color === "dark"
+      ? theme.colors.neutrals[900]
+      : "url(#paint0_linear_485_5621)"};
+
+  & > path {
+    fill: ${({ bg, theme }) =>
+      bg === "white"
+        ? theme.colors.neutrals[0]
+        : bg === "dark"
+        ? "red"
+        : bg === "gray"
+        ? theme.colors.neutrals[500]
+        : "url(#paint0_linear_485_5621)"};
+  }
+`;
+
+const AerolabIconSvg = (props: Props) => {
   return (
-    <svg
-      className={className}
-      width={width}
-      height={height}
+    <StyledSvg
+      className={props.className}
+      width={props.width || 24}
+      height={props.height || 24}
       viewBox="0 0 24 24"
-      fill={
-        color === "white"
-          ? "white"
-          : color === "dark"
-          ? "#252F3D"
-          : "url(#paint0_linear_485_5621)"
-      }
+      {...props}
       xmlns="http://www.w3.org/2000/svg"
     >
       <linearGradient
@@ -39,18 +49,7 @@ const AerolabIconSvg = ({
         <stop stopColor="#176FEB" />
         <stop offset="1" stopColor="#FF80FF" />
       </linearGradient>
-      <path
-        d="M0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12Z"
-        fill={
-          bg === "white"
-            ? "white"
-            : bg === "dark"
-            ? "#252F3D"
-            : bg === "gray"
-            ? "#8FA3BF"
-            : "url(#paint0_linear_485_5621)"
-        }
-      />
+      <path d="M0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12Z" />
       <g clipPath="url(#clip0_485_5621)">
         <path
           fillRule="evenodd"
@@ -68,7 +67,7 @@ const AerolabIconSvg = ({
           />
         </clipPath>
       </defs>
-    </svg>
+    </StyledSvg>
   );
 };
 

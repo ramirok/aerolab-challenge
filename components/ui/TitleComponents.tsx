@@ -14,10 +14,10 @@ export const TitleL1 = styled.div<TitleProps>`
   width: min-content;
   white-space: pre;
   display: inline-block;
-  ${({ color }) =>
+  ${({ color, theme }) =>
     color === "gradient"
-      ? "background: linear-gradient(102.47deg, #176feb -5.34%, #ff80ff 106.58%);-webkit-background-clip: text; -webkit-text-fill-color: transparent;"
-      : "color: #252f3d"};
+      ? `background: linear-gradient(102.47deg, ${theme.colors.brand.gradientDefault[0]} -5.34%, ${theme.colors.brand.gradientDefault[1]} 106.58%);-webkit-background-clip: text; -webkit-text-fill-color: transparent;`
+      : `color: ${theme.colors.neutrals[900]}`};
 
   @media screen and (min-width: 1024px) {
     font-size: 200px;
