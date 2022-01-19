@@ -48,7 +48,7 @@ const StyledContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
+  // position: relative;
   margin-top: -20px;
 
   @media screen and (min-width: 900px) {
@@ -78,14 +78,15 @@ const StyledContainer = styled.section`
 
   //   gradient background
   &::after {
-    top: -320px;
-    height: 125%;
+    top: 600px;
+    height: 1900px;
     content: "";
     position: absolute;
-    // width: 100%;
-    left: calc(100% - 100vw);
-    right: calc(calc(100% - 100vw) / 2);
+    width: 100%;
+    left: 0;
 
+    // left: calc(100% - 100vw);
+    // right: calc(calc(100% - 100vw) / 2);
     z-index: -2;
     background-image: linear-gradient(
       102.47deg,
@@ -95,12 +96,17 @@ const StyledContainer = styled.section`
     background-color: transparent;
 
     @media screen and (min-width: 900px) {
-      top: -150px;
-      height: 650px;
+      top: 750px;
+      height: 700px;
     }
     @media screen and (min-width: 1024px) {
-      top: 80px;
-      height: 528px;
+      top: 1500px;
+      height: 450px;
+    }
+
+    @media screen and (min-width: 1514px) {
+      top: 1050px;
+      height: 530px;
     }
   }
 `;
