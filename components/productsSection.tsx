@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useUser } from "../context/userContext";
 import { Get } from "../lib/FetchService";
+import toasts from "../lib/Toasts";
 import { Product } from "../types";
 import Filter from "./FIlter";
 import Pager from "./Pager";
@@ -60,6 +61,8 @@ const ProductsSection = () => {
     if (response.success) {
       setProducts(response.data);
       setFilteredProducts(response.data);
+    } else {
+      toasts.fail("Failed to retrieve products");
     }
   };
 

@@ -5,6 +5,7 @@ import React, {
   useState,
 } from "react";
 import { Get } from "../lib/FetchService";
+import toasts from "../lib/Toasts";
 import { UserData } from "../types";
 
 interface UserContexType {
@@ -24,6 +25,8 @@ export const UserProvider: React.FunctionComponent = (props) => {
     if (response.success) {
       setUserData(response.data);
       setIsLoading(false);
+    } else {
+      toasts.fail("Failed to authenticate");
     }
   };
 

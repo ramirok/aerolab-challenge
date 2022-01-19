@@ -1,8 +1,7 @@
 import toasts from "./Toasts";
 
 const BASE_URL = "https://coding-challenge-api.aerolab.co";
-const TOKEN =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWUyZDZhMWJjNDgzYTAwMjE2ZGE5NjgiLCJpYXQiOjE2NDIyNTYwMzN9.VVA-ablaYVIMKITor6C3F5DnVb9CjfrD-egzU_mAwyY";
+const TOKEN = process.env.NEXT_PUBLIC_TOKEN;
 
 export const Get = async (endPoint: string = "") => {
   try {
