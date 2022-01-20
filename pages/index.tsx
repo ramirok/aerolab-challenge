@@ -37,11 +37,11 @@ const Home: NextPage = () => {
 export default Home;
 
 const StyledLayout = styled.div`
-  max-width: 1446px;
+  max-width: 1464px;
   margin: 0 auto;
   width: 94%;
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1025px) {
     width: 90%;
   }
 

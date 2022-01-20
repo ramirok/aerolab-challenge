@@ -126,7 +126,7 @@ const StyledMenuButton = styled.div`
   transition: all 0.2s;
   cursor: pointer;
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1025px) {
     width: 156px;
     height: 48px;
     & > svg {

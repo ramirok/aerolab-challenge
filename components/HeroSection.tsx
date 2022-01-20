@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styled from "styled-components";
-import HeroImage from "../assets/heroImage.svg";
+import HeroImage from "../assets/hero-desktop.avif";
 import DownArrow from "../assets/arrowDownIcon.svg";
 import { Button } from "./ui/ButtonComponents";
 import { TextL1 } from "./ui/TextComponents";
@@ -32,9 +32,11 @@ const HeroSection = () => {
         <Image
           src={HeroImage}
           alt="man with tech products"
-          width={700}
-          height={700}
+          width={600}
+          height={620}
+          objectFit="cover"
           priority
+          objectPosition="top"
         />
       </StyledImageContent>
     </StyledContainer>
@@ -50,7 +52,7 @@ const StyledContainer = styled.section`
   align-items: center;
   gap: 50px;
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1025px) {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -64,11 +66,9 @@ const StyledTextContent = styled.div`
   text-align: center;
   max-width: 300px;
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1025px) {
     align-self: flex-end;
     max-width: 600px;
-  }
-  @media screen and (min-width: 1514px) {
     display: block;
     text-align: left;
   }
@@ -80,10 +80,10 @@ const StyledTextContent = styled.div`
     & button {
       width: 100%;
     }
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 1025px) {
       margin-top: 70px;
     }
-    @media screen and (min-width: 1514px) {
+    @media screen and (min-width: 1404px) {
       width: auto;
       & button {
         width: auto;
@@ -95,19 +95,18 @@ const StyledTextContent = styled.div`
 const StyledImageContent = styled.div`
   position: relative;
   max-width: 400px;
-
-  @media screen and (min-width: 1024px) {
-    min-width: 700px;
+  @media screen and (min-width: 1025px) {
+    max-width: 100%;
   }
 
   &::before {
-    @media screen and (min-width: 1514px) {
+    @media screen and (min-width: 1025px) {
       content: "";
       position: absolute;
       bottom: 2px;
       left: 50%;
-      width: 100%;
-      height: 85%;
+      width: 105%;
+      height: 90%;
       transform: translateX(-50%);
       background: linear-gradient(
         102.47deg,

@@ -33,7 +33,7 @@ export const TextL1 = styled.p<TextProps>`
   ${({ allCaps }) =>
     allCaps ? "text-transform: uppercase;letter-spacing: 4px;" : ""}
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1025px) {
     font-size: 18px;
   }
 `;

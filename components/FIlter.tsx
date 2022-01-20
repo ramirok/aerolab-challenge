@@ -72,7 +72,7 @@ const StyledContainer = styled.div`
   @media screen and (min-width: 769px) {
     width: 33%;
   }
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1025px) {
     flex-direction: row;
     width: 25%;
     min-width: 400px;

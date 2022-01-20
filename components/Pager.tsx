@@ -60,7 +60,7 @@ const StyledContainer = styled.div`
     margin-left: auto;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1025px) {
   }
 `;
 

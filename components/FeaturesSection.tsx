@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import FeatureCard from "./ui/FeatureCard";
-import Feature1 from "../assets/featuresCards/feature1.svg";
-import Feature2 from "../assets/featuresCards/feature2.svg";
-import Feature3 from "../assets/featuresCards/feature3.svg";
+import Feature1 from "../assets/featuresCards/feature1.avif";
+import Feature2 from "../assets/featuresCards/feature2.avif";
+import Feature3 from "../assets/featuresCards/feature3.avif";
 import Icon1 from "../assets/featuresCards/icon1.svg";
 import Icon2 from "../assets/featuresCards/icon2.svg";
 import Icon3 from "../assets/featuresCards/icon3.svg";
@@ -51,14 +51,18 @@ const StyledContainer = styled.section`
   // position: relative;
   margin-top: -20px;
 
-  @media screen and (min-width: 900px) {
+  @media screen and (min-width: 950px) {
     flex-direction: row;
     justify-content: space-between;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1025px) {
     align-items: flex-start;
-    justify-content: center;
+    justify-content: space-between;
+    margin-top: 100px;
+  }
+
+  @media screen and (min-width: 1404px) {
     & > *:first-child {
       transform: rotate(-2deg);
       margin-top: 30px;
@@ -72,14 +76,10 @@ const StyledContainer = styled.section`
     }
   }
 
-  @media screen and (min-width: 1514px) {
-    margin-top: 100px;
-  }
-
   //   gradient background
   &::after {
     top: 600px;
-    height: 1900px;
+    height: 1700px;
     content: "";
     position: absolute;
     width: 100%;
@@ -92,17 +92,17 @@ const StyledContainer = styled.section`
     );
     background-color: transparent;
 
-    @media screen and (min-width: 900px) {
+    @media screen and (min-width: 950px) {
       top: 750px;
       height: 700px;
     }
-    @media screen and (min-width: 1024px) {
-      top: 1500px;
-      height: 450px;
+    @media screen and (min-width: 1025px) {
+      top: 1400px;
+      height: 600px;
     }
 
-    @media screen and (min-width: 1514px) {
-      top: 1050px;
+    @media screen and (min-width: 1404px) {
+      top: 950px;
       height: 530px;
     }
   }

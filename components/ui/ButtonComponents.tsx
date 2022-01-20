@@ -60,7 +60,7 @@ const ButtonStyles = styled.button<ButtonProps>`
   }
 
 
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 1025px) {
     height: ${({ secondary }) => (secondary ? "50px" : "80px")};
   }
 `;

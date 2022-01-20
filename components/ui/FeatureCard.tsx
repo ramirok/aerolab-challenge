@@ -4,7 +4,7 @@ import { TextL1 } from "./TextComponents";
 import { TitleL3 } from "./TitleComponents";
 
 interface FeatureCardProps {
-  img: string;
+  img: StaticImageData;
   alt: string;
   title: string;
   description: string;
@@ -21,7 +21,15 @@ const FeatureCard = ({
   return (
     <StyledContainer>
       <div className="card__img">
-        <Image src={img} alt={alt} priority />
+        <Image
+          src={img}
+          alt={alt}
+          priority
+          objectFit="cover"
+          objectPosition="bottom"
+          width={500}
+          height={500}
+        />
       </div>
 
       <div className="card__content">
@@ -48,13 +56,17 @@ const StyledContainer = styled.div`
   z-index: 0;
   transition: all 0.2s;
   margin-bottom: 24px;
-  width: 335px;
+  width: 100%;
+  max-width: 335px;
 
-  @media screen and (min-width: 900px) {
-    width: 300px;
+  @media screen and (min-width: 950px) {
+    max-width: 320px;
   }
-  @media screen and (min-width: 1024px) {
-    width: 532px;
+  @media screen and (min-width: 1025px) {
+  }
+
+  @media screen and (min-width: 1404px) {
+    max-width: 530px;
   }
 
   &:hover {
@@ -62,12 +74,16 @@ const StyledContainer = styled.div`
     border: 1px solid ${({ theme }) => theme.colors.neutrals[600]};
     .card__img {
       & img {
-        transform: scale(1.1) rotate(-5deg);
+        transform: scale(1.1) rotate(-5deg) translateY(-15%);
+        @media screen and (min-width: 950px) {
+          transform: scale(1.1) rotate(-5deg);
+        }
       }
     }
   }
 
   .card__img {
+    overflow: hidden;
     background-color: ${({ theme }) => theme.colors.neutrals[0]};
     border-top-left-radius: 23px;
     border-top-right-radius: 23px;
@@ -77,10 +93,17 @@ const StyledContainer = styled.div`
       rgba(255, 128, 255, 0.5) 106.58%
     );
 
-    overflow: hidden;
+    height: 245px;
 
+    @media screen and (min-width: 950px) {
+      height: auto;
+    }
     & img {
+      transform: translateY(-15%);
       transition: all 0.2s;
+      @media screen and (min-width: 950px) {
+        transform: translateY(0);
+      }
     }
   }
 
@@ -91,7 +114,7 @@ const StyledContainer = styled.div`
     border-top: none;
     border-bottom-left-radius: 23px;
     border-bottom-right-radius: 23px;
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 1025px) {
       height: 170px;
     }
   }

@@ -22,7 +22,7 @@ export const TitleL1 = styled.h1<TitleProps>`
       ? `background: linear-gradient(102.47deg, ${theme.colors.brand.gradientDefault[0]} -5.34%, ${theme.colors.brand.gradientDefault[1]} 106.58%);-webkit-background-clip: text; -webkit-text-fill-color: transparent;`
       : `color: ${theme.colors.neutrals[900]}`};
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1025px) {
     font-size: 200px;
   }
 `;
@@ -30,7 +30,7 @@ export const TitleL1 = styled.h1<TitleProps>`
 // TITLE L2
 const TitleL2Styles = styled(TitleL1)`
   font-size: 32px;
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1025px) {
     font-size: 48px;
   }
 `;
@@ -46,13 +46,13 @@ export const TitleL2: React.FunctionComponent<TitleProps> = (props) => (
 const TitleL3Styles = styled(TitleL1)`
   font-size: 24px;
   line-height: 100%;
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1025px) {
     font-size: 32px;
   }
 `;
 
 export const TitleL3: React.FunctionComponent<TitleProps> = (props) => (
-  <TitleL2Styles as="h3" {...props}>
+  <TitleL3Styles as="h3" {...props}>
     {props.children}
-  </TitleL2Styles>
+  </TitleL3Styles>
 );

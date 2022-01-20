@@ -51,7 +51,7 @@ const StyledSortContainer = styled.div`
     width: 66%;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1025px) {
     flex-direction: row;
     width: 50%;
   }
@@ -73,7 +73,7 @@ const StyledSortOptions = styled.div`
       margin-left: 12px;
     }
 
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 1025px) {
       margin-bottom: 0px;
     }
   }
