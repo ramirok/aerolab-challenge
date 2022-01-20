@@ -7,10 +7,19 @@ import ProductsSection from "../components/productsSection";
 import Footer from "../components/Footer";
 import toasts from "../lib/Toasts";
 import { theme } from "../components/ui/styleVariables";
+import Head from "next/head";
 
 const Home: NextPage = () => {
   return (
     <ThemeProvider theme={theme}>
+      <Head>
+        <title>Explore The Tech Zone</title>
+        <meta
+          name="description"
+          content="Check out the latest tech products available. Visit our website for expert advice."
+          key="desc"
+        />
+      </Head>
       <StyledLayout>
         <TopBar />
         <HeroSection />

@@ -5,8 +5,10 @@ interface TextProps {
   allCaps?: boolean;
 }
 
-export const TextL1 = styled.div<TextProps>`
+// TEXT L1
+export const TextL1 = styled.p<TextProps>`
   font-family: "Montserrat", sans-serif;
+  margin: 0;
   font-size: 16px;
   font-weight: 600;
   line-height: 150%;
@@ -36,6 +38,7 @@ export const TextL1 = styled.div<TextProps>`
   }
 `;
 
+// TEXT L2
 export const TextL2 = styled(TextL1)`
   font-size: 14px;
   line-height: 150%;
