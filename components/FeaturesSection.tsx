@@ -84,9 +84,6 @@ const StyledContainer = styled.section`
     position: absolute;
     width: 100%;
     left: 0;
-
-    // left: calc(100% - 100vw);
-    // right: calc(calc(100% - 100vw) / 2);
     z-index: -2;
     background-image: linear-gradient(
       102.47deg,

@@ -21,13 +21,13 @@ const FeatureCard = ({
   return (
     <StyledContainer>
       <div className="card__img">
-        <Image src={img} alt={alt} />
+        <Image src={img} alt={alt} priority />
       </div>
 
       <div className="card__content">
         <div className="card__title">
           <div className="card__icon">
-            <Image src={icon} alt="icon" width={30} height={30} />
+            <Image src={icon} alt="icon" width={30} height={30} priority />
           </div>
           <TitleL3 color="gradient">{title}</TitleL3>
         </div>
