@@ -49,7 +49,7 @@ const DropdownMenu = () => {
 
       <StyledMenuPanel
         className={`${menuIsVisible && "active"}`}
-        onBlur={() => setMenuIsVisible(false)}
+        // onBlur={() => setMenuIsVisible(false)}
       >
         <TextL1 color="black" className="menuPanel__title">
           Add Balance
@@ -77,11 +77,12 @@ const DropdownMenu = () => {
         <div className="credits__container">
           <div className="credits__options">
             {pointsOptions.map((option) => (
-              <div onClick={() => setPointsSelected(option)} key={option}>
-                <OptionSelector active={option === pointsSelected}>
-                  {option}
-                </OptionSelector>
-              </div>
+              <OptionSelector
+                active={option === pointsSelected}
+                value={String(option)}
+                onClick={() => setPointsSelected(option)}
+                key={option}
+              />
             ))}
           </div>
           <div className="credits__addButton">

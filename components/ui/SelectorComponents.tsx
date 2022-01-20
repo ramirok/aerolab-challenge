@@ -3,19 +3,26 @@ import { TextL1 } from "./TextComponents";
 interface SelectorProps {
   active?: boolean;
   large?: boolean;
-  children: React.ReactNode;
   onClick?: () => void;
+  value: string;
 }
+export const OptionSelector = (props: SelectorProps) => {
+  console.log(props);
 
-export const OptionSelector = (props: SelectorProps) => (
-  <OptionSelectorStyle {...props}>
-    <TextL1 color={props.active ? "white" : "gradient"} nowrap>
-      {props.children}
-    </TextL1>
-  </OptionSelectorStyle>
-);
+  return (
+    <OptionSelectorStyle {...props}>
+      <TextL1 color={props.active ? "white" : "gradient"}>{props.value}</TextL1>
+      <input name="select options" value={props.value} type="radio" />
+    </OptionSelectorStyle>
+  );
+};
 
-const OptionSelectorStyle = styled.button<SelectorProps>`
+const OptionSelectorStyle = styled.label<SelectorProps>`
+  & input {
+    appearance: none;
+    margin: 0;
+  }
+
   border-radius: 12px;
   border: 1px hidden transparent;
   background: ${({ active, theme }) =>
@@ -25,7 +32,6 @@ const OptionSelectorStyle = styled.button<SelectorProps>`
   width: min-content;
   height: ${({ large }) => (large ? "43px" : "35px")};
   width: ${({ large }) => (large ? "165px" : "85px")};
-  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;

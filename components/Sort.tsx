@@ -16,12 +16,6 @@ const Sort = ({ handleChangeSorting, currentSorting }: SortProps) => {
       <TextL1>Sort By: </TextL1>
       <StyledSortOptions className="sortOptions">
         {options.map((option) => (
-          // <div
-          //   key={option}
-          //   onClick={() => {
-          //     handleChangeSorting(option);
-          //   }}
-          // >
           <OptionSelector
             large
             active={currentSorting === option}
@@ -29,10 +23,8 @@ const Sort = ({ handleChangeSorting, currentSorting }: SortProps) => {
             onClick={() => {
               handleChangeSorting(option);
             }}
-          >
-            {option}
-          </OptionSelector>
-          // </div>
+            value={option}
+          />
         ))}
       </StyledSortOptions>
     </StyledSortContainer>
@@ -66,7 +58,7 @@ const StyledSortOptions = styled.div`
     flex-direction: row;
   }
 
-  & > button {
+  & > label {
     width: 100%;
     margin-bottom: 12px;
     @media screen and (min-width: 769px) {
