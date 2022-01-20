@@ -66,7 +66,7 @@ const StyledSortOptions = styled.div`
     flex-direction: row;
   }
 
-  & > div {
+  & > button {
     width: 100%;
     margin-bottom: 12px;
     @media screen and (min-width: 769px) {

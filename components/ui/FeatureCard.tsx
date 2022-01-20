@@ -37,7 +37,9 @@ const FeatureCard = ({
           <div className="card__icon">
             <Image src={icon} alt="icon" width={30} height={30} priority />
           </div>
-          <TitleL3 color="gradient">{title}</TitleL3>
+          <TitleL3 color="gradient" as="h2">
+            {title}
+          </TitleL3>
         </div>
         <TextL1>{description}</TextL1>
       </div>

@@ -15,7 +15,7 @@ export const OptionSelector = (props: SelectorProps) => (
   </OptionSelectorStyle>
 );
 
-const OptionSelectorStyle = styled.div<SelectorProps>`
+const OptionSelectorStyle = styled.button<SelectorProps>`
   border-radius: 12px;
   border: 1px hidden transparent;
   background: ${({ active, theme }) =>

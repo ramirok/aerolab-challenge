@@ -47,7 +47,10 @@ const DropdownMenu = () => {
         />
       </StyledMenuButton>
 
-      <StyledMenuPanel className={`${menuIsVisible && "active"}`}>
+      <StyledMenuPanel
+        className={`${menuIsVisible && "active"}`}
+        onBlur={() => setMenuIsVisible(false)}
+      >
         <TextL1 color="black" className="menuPanel__title">
           Add Balance
         </TextL1>
@@ -114,7 +117,7 @@ const StyledContainer = styled.div`
   position: relative;
 `;
 
-const StyledMenuButton = styled.div`
+const StyledMenuButton = styled.button`
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 interface TitleProps {
   color?: "gradient";
+  as?: "h1" | "h2" | "h3";
 }
 
 // TITLE L1
@@ -36,7 +37,7 @@ const TitleL2Styles = styled(TitleL1)`
 `;
 
 export const TitleL2: React.FunctionComponent<TitleProps> = (props) => (
-  <TitleL2Styles as="h2" {...props}>
+  <TitleL2Styles as={props.as || "h2"} {...props}>
     {props.children}
   </TitleL2Styles>
 );
@@ -52,7 +53,7 @@ const TitleL3Styles = styled(TitleL1)`
 `;
 
 export const TitleL3: React.FunctionComponent<TitleProps> = (props) => (
-  <TitleL3Styles as="h3" {...props}>
+  <TitleL3Styles as={props.as || "h3"} {...props}>
     {props.children}
   </TitleL3Styles>
 );

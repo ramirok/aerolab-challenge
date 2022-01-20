@@ -24,6 +24,7 @@ const Pager = ({ totalCount, page, pageSize, setPage }: PagerProps) => {
   return (
     <StyledContainer>
       <StyledButtonArrow
+        aria-label="next page"
         className="arrow-left"
         onClick={prevPage}
         disabled={page === 1}
@@ -35,6 +36,7 @@ const Pager = ({ totalCount, page, pageSize, setPage }: PagerProps) => {
         {page} of {totalPageCount}
       </TextL1>
       <StyledButtonArrow
+        aria-label="next page"
         className="arrow-right"
         onClick={nextPage}
         disabled={page === totalPageCount}

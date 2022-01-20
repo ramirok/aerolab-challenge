@@ -72,8 +72,10 @@ const ProductsSection = () => {
 
   return (
     <StyledContainer id="products">
-      <TitleL2 color="gradient">tech</TitleL2>
-      <TitleL2> products</TitleL2>
+      <TitleL2 color="gradient" as="h3">
+        tech
+      </TitleL2>
+      <TitleL2 as="h3"> products</TitleL2>
 
       <StyledToolBar>
         <Filter
