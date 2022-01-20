@@ -78,10 +78,11 @@ const DropdownMenu = () => {
           <div className="credits__options">
             {pointsOptions.map((option) => (
               <OptionSelector
+                key={option}
                 active={option === pointsSelected}
                 value={String(option)}
                 onClick={() => setPointsSelected(option)}
-                key={option}
+                groupName="select credits"
               />
             ))}
           </div>

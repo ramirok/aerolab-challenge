@@ -47,6 +47,10 @@ export default TopBar;
 
 // styles
 const StyledTopBar = styled.div`
+  & a {
+    border-radius: 12px;
+  }
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -67,6 +71,7 @@ const StyledTopBar = styled.div`
     width: 100%;
     top: 10px;
     left: 0;
+    z-index: -1;
   }
   &.topBar-pinned {
     &:before {

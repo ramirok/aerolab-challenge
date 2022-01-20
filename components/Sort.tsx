@@ -17,13 +17,14 @@ const Sort = ({ handleChangeSorting, currentSorting }: SortProps) => {
       <StyledSortOptions className="sortOptions">
         {options.map((option) => (
           <OptionSelector
-            large
-            active={currentSorting === option}
             key={option}
+            active={currentSorting === option}
+            value={option}
             onClick={() => {
               handleChangeSorting(option);
             }}
-            value={option}
+            groupName="select sorting"
+            large
           />
         ))}
       </StyledSortOptions>

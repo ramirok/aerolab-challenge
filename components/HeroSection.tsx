@@ -19,7 +19,7 @@ const HeroSection = () => {
           exchange them for cool tech.
         </TextL1>
         <Link href="#products">
-          <a>
+          <a tabIndex={-1}>
             <Button color="white">
               VIEW ALL PRODUCTS{"    "}
               <Image src={DownArrow} alt="arrow down" width={14} height={17} />

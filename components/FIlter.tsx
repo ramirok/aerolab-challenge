@@ -33,6 +33,7 @@ const Filter = ({
         <div
           className="dropdown__button"
           onClick={() => setMenuIsVisible((prev) => !prev)}
+          tabIndex={0}
         >
           <TextL1>{currentFilter}</TextL1>
           <div className="dropdown__arrow">
@@ -40,7 +41,10 @@ const Filter = ({
           </div>
         </div>
 
-        <ul className={`dropdown__panel ${menuIsVisible && "active"}`}>
+        <ul
+          tabIndex={0}
+          className={`dropdown__panel ${menuIsVisible && "active"}`}
+        >
           {categories.map((item) => (
             <li
               key={item}
