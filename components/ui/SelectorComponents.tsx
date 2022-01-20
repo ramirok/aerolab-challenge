@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import { TextL1 } from "./TextComponents";
 interface SelectorProps {
@@ -6,16 +7,12 @@ interface SelectorProps {
   onClick?: () => void;
   value: string;
 }
-export const OptionSelector = (props: SelectorProps) => {
-  console.log(props);
-
-  return (
-    <OptionSelectorStyle {...props}>
-      <TextL1 color={props.active ? "white" : "gradient"}>{props.value}</TextL1>
-      <input name="select options" value={props.value} type="radio" />
-    </OptionSelectorStyle>
-  );
-};
+export const OptionSelector = (props: SelectorProps) => (
+  <OptionSelectorStyle {...props}>
+    <TextL1 color={props.active ? "white" : "gradient"}>{props.value}</TextL1>
+    <input name="select options" value={props.value} type="radio" />
+  </OptionSelectorStyle>
+);
 
 const OptionSelectorStyle = styled.label<SelectorProps>`
   & input {
