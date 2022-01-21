@@ -1,9 +1,9 @@
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import Arrow from "../assets/arrowUpIcon.svg";
-import { Product } from "../types";
-import { TextL1 } from "./ui/TextComponents";
+import Arrow from "../../assets/arrowUpIcon.svg";
+import { Product } from "../../types";
+import { TextL1 } from "../ui components/TextComponents";
 
 interface FilterProps {
   products: Product[];

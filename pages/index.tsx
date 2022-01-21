@@ -1,12 +1,12 @@
 import type { NextPage } from "next";
 import styled, { ThemeProvider } from "styled-components";
-import TopBar from "../components/TopBar";
+import TopBar from "../components/TopBar/TopBar";
 import HeroSection from "../components/HeroSection";
-import FeaturesSection from "../components/FeaturesSection";
-import ProductsSection from "../components/productsSection";
+import FeaturesSection from "../components/FeaturesSection/FeaturesSection";
+import ProductsSection from "../components/ProductsSection/ProductsSection";
 import Footer from "../components/Footer";
 import toasts from "../lib/Toasts";
-import { theme } from "../components/ui/styleVariables";
+import { theme } from "../components/ui components/styleVariables";
 import Head from "next/head";
 
 const Home: NextPage = () => {

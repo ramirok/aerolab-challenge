@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import Logo from "../assets/logo.svg";
+import Logo from "../../assets/logo.svg";
 import DropdownMenu from "./DropdownMenu";
 
 const TopBar = () => {

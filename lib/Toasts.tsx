@@ -1,9 +1,9 @@
 import Image from "next/image";
 import toast, { Toaster } from "react-hot-toast";
-import { TextL1 } from "../components/ui/TextComponents";
+import { TextL1 } from "../components/ui components/TextComponents";
 import CloseIcon from "../assets/x.svg";
 import ErrorIcon from "../assets/error.svg";
-import { theme } from "../components/ui/styleVariables";
+import { theme } from "../components/ui components/styleVariables";
 import styled from "styled-components";
 
 const toastSuccess = (title: string) => {

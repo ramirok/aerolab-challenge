@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { TextL1 } from "./ui/TextComponents";
-import { OptionSelector } from "./ui/SelectorComponents";
+import { TextL1 } from "../ui components/TextComponents";
+import { OptionSelector } from "../ui components/SelectorComponents";
 
 interface SortProps {
   handleChangeSorting: (value: string) => void;

@@ -1,15 +1,15 @@
 import Image from "next/image";
 import { useState } from "react";
 import styled from "styled-components";
-import ArrowUpIcon from "../assets/arrowUpIcon.svg";
-import { Button } from "./ui/ButtonComponents";
-import { OptionSelector } from "./ui/SelectorComponents";
-import { TextL1, TextL2 } from "./ui/TextComponents";
-import Spinner from "./ui/Spinner";
-import { useUser } from "../context/userContext";
-import AerolabIconSvg from "../assets/AerolabIconSvg";
-import { Post } from "../lib/FetchService";
-import toasts from "../lib/Toasts";
+import ArrowUpIcon from "../../assets/arrowUpIcon.svg";
+import { Button } from "../ui components/ButtonComponents";
+import { OptionSelector } from "../ui components/SelectorComponents";
+import { TextL1, TextL2 } from "../ui components/TextComponents";
+import Spinner from "../ui components/Spinner";
+import { useUser } from "../../context/userContext";
+import AerolabIconSvg from "../../assets/AerolabIconSvg";
+import { Post } from "../../lib/FetchService";
+import toasts from "../../lib/Toasts";
 
 const DropdownMenu = () => {
   const [menuIsVisible, setMenuIsVisible] = useState(false);

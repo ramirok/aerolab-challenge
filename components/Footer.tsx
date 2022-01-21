@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styled from "styled-components";
-import { TextL1 } from "./ui/TextComponents";
+import { TextL1 } from "./ui components/TextComponents";
 import GithubLogo from "../assets/github.svg";
 
 const Footer = () => {

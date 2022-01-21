@@ -2,9 +2,9 @@ import Image from "next/image";
 import styled from "styled-components";
 import HeroImage from "../assets/hero-desktop.avif";
 import DownArrow from "../assets/arrowDownIcon.svg";
-import { Button } from "./ui/ButtonComponents";
-import { TextL1 } from "./ui/TextComponents";
-import { TitleL1 } from "./ui/TitleComponents";
+import { Button } from "./ui components/ButtonComponents";
+import { TextL1 } from "./ui components/TextComponents";
+import { TitleL1 } from "./ui components/TitleComponents";
 import Link from "next/link";
 
 const HeroSection = () => {

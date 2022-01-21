@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styled from "styled-components";
-import { TextL1 } from "./TextComponents";
-import { TitleL3 } from "./TitleComponents";
+import { TextL1 } from "../ui components/TextComponents";
+import { TitleL3 } from "../ui components/TitleComponents";
 
 interface FeatureCardProps {
   img: StaticImageData;

@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import FeatureCard from "./ui/FeatureCard";
-import Feature1 from "../assets/featuresCards/feature1.avif";
-import Feature2 from "../assets/featuresCards/feature2.avif";
-import Feature3 from "../assets/featuresCards/feature3.avif";
-import Icon1 from "../assets/featuresCards/icon1.svg";
-import Icon2 from "../assets/featuresCards/icon2.svg";
-import Icon3 from "../assets/featuresCards/icon3.svg";
+import FeatureCard from "./FeatureCard";
+import Feature1 from "../../assets/featuresCards/feature1.avif";
+import Feature2 from "../../assets/featuresCards/feature2.avif";
+import Feature3 from "../../assets/featuresCards/feature3.avif";
+import Icon1 from "../../assets/featuresCards/icon1.svg";
+import Icon2 from "../../assets/featuresCards/icon2.svg";
+import Icon3 from "../../assets/featuresCards/icon3.svg";
 
 const FeaturesSection = () => {
   const featureCards = [

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import styled from "styled-components";
-import PageArrowIcon from "../assets/PageArrowIcon";
-import { TextL1 } from "./ui/TextComponents";
+import PageArrowIcon from "../../assets/PageArrowIcon";
+import { TextL1 } from "../ui components/TextComponents";
 
 interface PagerProps {
   totalCount: number;

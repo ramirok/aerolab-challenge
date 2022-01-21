@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useUser } from "../context/userContext";
-import { Get } from "../lib/FetchService";
-import toasts from "../lib/Toasts";
-import { Product } from "../types";
-import Filter from "./FIlter";
-import Pager from "./Pager";
-import Sort from "./Sort";
-import ProductCard from "./ui/ProductCard";
-import ProductCardSkeleton from "./ui/ProductCardSkeleton";
-import { TextL1 } from "./ui/TextComponents";
-import { TitleL2 } from "./ui/TitleComponents";
+import { useUser } from "../../context/userContext";
+import { Get } from "../../lib/FetchService";
+import toasts from "../../lib/Toasts";
+import { Product } from "../../types";
+import Filter from "./FIlterComponent";
+import Pager from "./PagerComponent";
+import Sort from "./SortComponent";
+import ProductCard from "./ProductCard";
+import ProductCardSkeleton from "./ProductCardSkeleton";
+import { TextL1 } from "../ui components/TextComponents";
+import { TitleL2 } from "../ui components/TitleComponents";
 
 const ProductsSection = () => {
   const [products, setProducts] = useState<Product[]>([]); //products fetched

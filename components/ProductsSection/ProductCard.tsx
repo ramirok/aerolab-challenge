@@ -1,8 +1,8 @@
 import Image from "next/image";
 import styled from "styled-components";
 import { Product } from "../../types";
-import { Button } from "./ButtonComponents";
-import { TextL1, TextL2 } from "./TextComponents";
+import { Button } from "../ui components/ButtonComponents";
+import { TextL1, TextL2 } from "../ui components/TextComponents";
 import { useState } from "react";
 import { useUser } from "../../context/userContext";
 import toasts from "../../lib/Toasts";
