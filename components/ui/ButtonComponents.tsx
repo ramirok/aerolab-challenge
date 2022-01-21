@@ -8,6 +8,7 @@ interface ButtonProps {
   $loading?: boolean;
   onClick?: () => void;
   color?: "black" | "gray" | "white" | "gradient";
+  className?: string;
 }
 
 const ButtonStyles = styled.button<ButtonProps>`

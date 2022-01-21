@@ -32,8 +32,12 @@ const DropdownMenu = () => {
   };
 
   return (
-    <StyledContainer>
-      <StyledMenuButton onClick={() => setMenuIsVisible((prev) => !prev)}>
+    <StyledContainer
+      tabIndex={-1}
+      onBlur={() => setMenuIsVisible(false)}
+      onFocus={() => setMenuIsVisible(true)}
+    >
+      <StyledMenuButton>
         <AerolabIconSvg height={24} width={24} />
         <TextL1 color="gradient">
           {user.isLoading ? <Spinner color="dark" /> : user.userData.points}
@@ -47,10 +51,7 @@ const DropdownMenu = () => {
         />
       </StyledMenuButton>
 
-      <StyledMenuPanel
-        className={`${menuIsVisible && "active"}`}
-        // onBlur={() => setMenuIsVisible(false)}
-      >
+      <StyledMenuPanel className={`${menuIsVisible && "active"}`}>
         <TextL1 color="black" className="menuPanel__title">
           Add Balance
         </TextL1>
@@ -74,40 +75,37 @@ const DropdownMenu = () => {
           </div>
         </div>
 
-        <div className="credits__container">
-          <div className="credits__options">
-            {pointsOptions.map((option) => (
-              <OptionSelector
-                key={option}
-                active={option === pointsSelected}
-                value={String(option)}
-                onClick={() => setPointsSelected(option)}
-                groupName="select credits"
-              />
-            ))}
-          </div>
-          <div className="credits__addButton">
-            <Button
-              secondary
-              disabled={!Boolean(pointsSelected)}
-              onClick={() => addPoints(pointsSelected)}
-              color="white"
-            >
-              {isLoading ? (
-                <Spinner />
-              ) : (
-                <>
-                  {!Boolean(pointsSelected) ? (
-                    <AerolabIconSvg bg="gray" color="white" />
-                  ) : (
-                    <AerolabIconSvg bg="white" color="gradient" />
-                  )}{" "}
-                  Add Point
-                </>
-              )}
-            </Button>
-          </div>
+        <div className="credits__options">
+          {pointsOptions.map((option) => (
+            <OptionSelector
+              key={option}
+              active={option === pointsSelected}
+              value={String(option)}
+              onClick={() => setPointsSelected(option)}
+              groupName="select credits"
+            />
+          ))}
         </div>
+        <Button
+          secondary
+          disabled={!Boolean(pointsSelected)}
+          onClick={() => addPoints(pointsSelected)}
+          color="white"
+          className="credits__addButton"
+        >
+          {isLoading ? (
+            <Spinner />
+          ) : (
+            <>
+              {!Boolean(pointsSelected) ? (
+                <AerolabIconSvg bg="gray" color="white" />
+              ) : (
+                <AerolabIconSvg bg="white" color="gradient" />
+              )}{" "}
+              Add Point
+            </>
+          )}
+        </Button>
       </StyledMenuPanel>
     </StyledContainer>
   );
@@ -145,8 +143,8 @@ const StyledMenuButton = styled.button`
   }
 `;
 const StyledMenuPanel = styled.div`
-  background-color: ${({ theme }) => theme.colors.neutrals[0]};
   position: absolute;
+  background-color: ${({ theme }) => theme.colors.neutrals[0]};
   border: 1px solid #dae4f2;
   padding: 16px 16px;
   top: 100%;
@@ -169,23 +167,15 @@ const StyledMenuPanel = styled.div`
   }
 
   & .credits {
-    &__container {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 40px;
-      flex-direction: column;
-    }
-
     &__options {
       display: flex;
       justify-content: space-between;
+      margin-top: 40px;
     }
 
     &__addButton {
       margin-top: 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
+      width: 100%;
     }
   }
 
