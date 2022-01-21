@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Arrow from "../assets/arrowUpIcon.svg";
 import { Product } from "../types";
@@ -16,34 +16,79 @@ const Filter = ({
   handleChangeFilter,
   currentFilter,
 }: FilterProps) => {
+  // ----------------------------------------------------------------------------
   // push each product's category inside a Set, then gets an array from that set
   const categoriesSet = new Set<string>();
   products.forEach((product) => {
     categoriesSet.add(product.category);
   });
   const categories = ["All Products"].concat(Array.from(categoriesSet));
+  // ---------------------------------------------------------------------------
 
   const [menuIsVisible, setMenuIsVisible] = useState(false);
 
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const ulRef = useRef<HTMLUListElement>(null);
+
   return (
-    <StyledContainer>
+    <StyledContainer
+      onKeyDown={(event) => {
+        // -------------------------------------------------------------
+        // this allows to navigate categories dropdown with arrow keys
+        if (event.code === "Enter") {
+          // return focus to menu button when pressing enter on a category
+          if (menuIsVisible) {
+            event.preventDefault();
+            setMenuIsVisible(false);
+            buttonRef.current!.focus();
+          }
+        }
+        if (event.code === "ArrowDown") {
+          // update filter and set focus on the next category
+          event.preventDefault();
+          if (!menuIsVisible) setMenuIsVisible(true);
+          const currentIndex = categories.indexOf(currentFilter);
+          const nextIndex =
+            currentIndex === categories.length - 1
+              ? currentIndex
+              : currentIndex + 1;
+
+          handleChangeFilter(categories[nextIndex], categories);
+          const li = ulRef.current!.children[nextIndex] as HTMLElement;
+          li.focus();
+        }
+        if (event.code === "ArrowUp") {
+          // update filter and set focus on the previous category
+          event.preventDefault();
+          if (!menuIsVisible) setMenuIsVisible(true);
+          const currentIndex = categories.indexOf(currentFilter);
+          const prevIndex =
+            currentIndex === 0 ? currentIndex : currentIndex - 1;
+
+          handleChangeFilter(categories[prevIndex], categories);
+          const li = ulRef.current!.children[prevIndex] as HTMLElement;
+          li.focus();
+        }
+        // ------------------------------------------------------------
+      }}
+    >
       <TextL1>Filter By: </TextL1>
 
       <StyledDropDown>
-        <div
+        <button
           className="dropdown__button"
           onClick={() => setMenuIsVisible((prev) => !prev)}
-          tabIndex={0}
+          ref={buttonRef}
         >
           <TextL1>{currentFilter}</TextL1>
           <div className="dropdown__arrow">
             <Image src={Arrow} alt="down arrow" />
           </div>
-        </div>
+        </button>
 
         <ul
-          tabIndex={0}
           className={`dropdown__panel ${menuIsVisible && "active"}`}
+          ref={ulRef}
         >
           {categories.map((item) => (
             <li
@@ -52,6 +97,8 @@ const Filter = ({
                 setMenuIsVisible(false);
                 handleChangeFilter(item, categories);
               }}
+              className={currentFilter === item ? "active" : ""}
+              tabIndex={-1}
             >
               <TextL1>{item}</TextL1>
             </li>
@@ -108,6 +155,8 @@ const StyledDropDown = styled.div`
     padding: 16px 24px;
     cursor: pointer;
     transition: all 0.2s;
+
+    width: 100%;
     &:hover {
       transform: scale(1.03);
       border: 1px solid ${({ theme }) => theme.colors.neutrals[600]};
@@ -124,7 +173,7 @@ const StyledDropDown = styled.div`
     border-radius: 8px;
     width: 100%;
     margin-top: 10px;
-    padding: 0;
+    padding: 5px;
     transition: all 0.2s;
     z-index: 10;
     background-color: ${({ theme }) => theme.colors.neutrals[0]};
@@ -134,9 +183,14 @@ const StyledDropDown = styled.div`
     }
 
     & li {
+      margin: 5px;
       list-style: none;
       padding: 16px 24px;
       cursor: pointer;
+      border-radius: 8px;
+      &.active {
+        background-color: ${({ theme }) => theme.colors.brand.light2};
+      }
       &:hover {
         background-color: ${({ theme }) => theme.colors.neutrals[100]};
       }
